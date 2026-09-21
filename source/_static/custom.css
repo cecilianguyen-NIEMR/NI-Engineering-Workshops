@@ -1,0 +1,6 @@
+:root { --ni-green: #007864; --ni-dark: #003b32; }
+.wy-side-nav-search { background: var(--ni-green); }
+.wy-menu-vertical a:active { background: var(--ni-green); }
+.rst-content h1, .rst-content h2, .rst-content h3 { color: var(--ni-dark); }
+.rst-content img { max-width: 100%; height: auto; }
+.rst-content table.docutils { width: 100%; }
