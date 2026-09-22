@@ -1,7 +1,7 @@
 Level 1: Foundations of Test & Engineering Thinking
 ===================================================
 
-.. image:: ../_static/media/image1.png
+.. image:: .._static/media/image1.png
    :alt: Level 1 student manual cover
    :align: center
    :width: 80%
@@ -186,7 +186,6 @@ V&V Example: Boeing
 ^^^^^^^^^^^^^^^^^^^
 
 A great example of Verification & Validation (V&V) testing comes from Boeing during the development of commercial aircraft systems. Before an aircraft ever enters service, engineers must verify that each subsystem meets its design requirements and validate that the overall system performs as intended in real-world operating conditions.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To accomplish this, Boeing engineers use automated test systems to
 simulate electrical signals, sensor inputs, and operating scenarios that
