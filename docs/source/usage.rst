@@ -42,7 +42,8 @@ Their goal is to find problems before customers do. Rather than relying
 on assumptions, test engineers use measurements and data to verify that
 a product behaves as expected.
 
-**Hardware vs. Software Test**
+Hardware vs. Software Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Testing exists everywhere, but it often looks different depending on
 what is being tested.
