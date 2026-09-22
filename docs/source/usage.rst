@@ -1,7 +1,7 @@
 Level 1: Foundations of Test & Engineering Thinking
 ===================================================
 
-.. image:: _static/media/image1.png
+.. image:: ../_static/media/image1.png
    :alt: Level 1 student manual cover
    :align: center
    :width: 80%
