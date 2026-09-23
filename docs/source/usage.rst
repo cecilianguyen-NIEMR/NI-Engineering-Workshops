@@ -11,7 +11,7 @@ Level 1: Foundations of Test & Engineering Thinking
    :depth: 2
 
 Test in Engineering
-===================
+-------------------
 
 Every day, we interact with products that we rarely think twice about.
 
@@ -87,7 +87,7 @@ To understand where testing fits into that journey, we first need to
 understand the Product Life Cycle.
 
 The Product Life Cycle
-======================
+----------------------
 
 .. _what-is-it-1:
 
@@ -102,12 +102,13 @@ perspective, the PLC helps teams design, build, test, and improve
 products while ensuring they meet requirements for performance,
 reliability, and safety.
 
-|image2|\ For engineers, the lifecycle typically begins with an idea,
+For engineers, the lifecycle typically begins with an idea,
 followed by research, design, prototyping, validation, production, and
 deployment. At each stage, testing helps reduce risk, uncover problems
 early, and build confidence that the final product will work as
 intended.
 
+|image2|\ 
 Figure 1. Product Development Life Cycle diagram.
 
 A common misconception is that testing only happens once a product is
@@ -123,23 +124,23 @@ Although testing is present at every stage, two phases play a
 particularly important role in bringing a product to market:
 **Verification &** **Validation** and **Production**.
 
-**Verification & Validation (V&V) answers the question: "Did we design
-the product correctly?"**
+**Verification & Validation (V&V)** answers the question: "Did we design
+the product correctly?"
 
-**Production answers the question: "Did we build the product
-correctly?"**
+**Production** answers the question: "Did we build the product
+correctly?"
 
 Understanding the difference between these two phases is critical
 because together they help ensure that products are both designed to
 work and manufactured to work every time.
 
 Verification and Validation (V&V) Testing
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _what-is-it-2:
 
 What is it?
-^^^^^^^^^^^
+"""""""""""
 
 Before a company invests time and money manufacturing thousands of
 units, engineers need confidence that the design will perform as
@@ -183,7 +184,7 @@ V&V testing can take many forms depending on the product and industry:
 +-----------------------------------+-----------------------------------+
 
 V&V Example: Boeing
-^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""
 
 A great example of Verification & Validation (V&V) testing comes from Boeing during the development of commercial aircraft systems. Before an aircraft ever enters service, engineers must verify that each subsystem meets its design requirements and validate that the overall system performs as intended in real-world operating conditions.
 
@@ -221,12 +222,12 @@ ensuring that every unit leaving the factory meets the same quality and
 performance standards.
 
 Production Testing
-------------------
+^^^^^^^^^^^^^^^^^^
 
 .. _what-is-it-3:
 
 What is it?
-^^^^^^^^^^^
+"""""""""""
 
 Once engineers have confidence that the design works, the next challenge
 is manufacturing thousands or even millions of identical products.
@@ -293,7 +294,7 @@ Production testing can include several types of testing:
 +-----------------------------------+-----------------------------------+
 
 Production Example: Xbox 360 Controller
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 
 A great example of production testing comes from Microsoft and the Xbox
 360 controller. Once the controller design had been validated, Microsoft
@@ -332,7 +333,7 @@ Production testing ensures that customers receive the same reliable
 product every time they open the box.
 
 V&V vs. Production
-~~~~~~~~~~~~~~~~~~
+""""""""""""""""""
 
 A simple way to remember the difference is:
 
@@ -358,7 +359,7 @@ controllers on a production line, the goal is the same: build confidence
 through measurement and data.
 
 Why does this all matter?
-=========================
+-------------------------
 
 At this point, we've talked about V&V testing and production testing.
 But a natural question is:
@@ -418,7 +419,7 @@ answer, they are the ones who know how to ask the right questions,
 gather evidence, and use data to make informed decisions.
 
 How can you be the best?
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that we've seen how engineers use testing to solve real problems, a
 natural question is:
@@ -510,10 +511,10 @@ companies want to hire.
 So now that you know what you are getting yourself into, let’s test!
 
 How to Apply Test
-=================
+-----------------
 
 Measurement Chain
------------------
+^^^^^^^^^^^^^^^^^
 
 Engineering is all about making decisions using data. To do that,
 engineers must first capture information from the physical world and
@@ -528,7 +529,7 @@ system that can detect temperature changes and respond when conditions
 fall outside the desired range.
 
 |image5|\ Hands-on Materials
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""
 
 In this workshop you will be using a USB-6421 mioDAQ for you system and
 you will plug it in using a USB-C to USB-C cable to a computer. On the
@@ -540,7 +541,7 @@ For your circuit, you will be using a breadboard, wires, LEDs,
 resistors, a 10k Ohm Thermistor, and a 0.1uF Capacitor.
 
 Greenhouse: Project Scenario
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Imagine you work for a climate-control company that supports commercial
 greenhouses.
@@ -565,10 +566,9 @@ Your system must:
 - Help prevent crop damage caused by temperature extremes
 
 Physical Phenomenon
--------------------
+^^^^^^^^^^^^^^^^^^^
 
-What are we trying to measure?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**What are we trying to measure?**
 
 A physical phenomenon is something occurring in the real world that we
 want to observe or measure. Examples include temperature, pressure,
@@ -591,10 +591,9 @@ phenomenon.
 - Why is temperature important for plants?
 
 Choosing a Sensor/ Transducer
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-What can we use to measure our physical phenomena?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**What can we use to measure our physical phenomena?**
 
 A sensor is a device that detects a physical phenomenon and converts it
 into an electrical signal that can be measured by a DAQ, computer, or
@@ -624,7 +623,7 @@ Common temperature sensors include:
   temperature monitoring and control applications.
 
 Signal Conditioning
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 *What is Signal Conditioning?*
 
@@ -720,10 +719,9 @@ reduces development time and helps engineers collect reliable
 measurements more quickly.
 
 First Look at the mioDAQ
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 
-Example: Signal Conditioning in the mioDAQ
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Example: Signal Conditioning in the mioDAQ*
 
 For example, mioDAQ includes a built-in cold-junction compensation (CJC)
 sensor that allows users to connect thermocouples directly and measure
@@ -767,12 +765,11 @@ fully understand the flow of electricity, let’s look at the schematic.
 Figure 5. A pinout diagram of the circuit and mioDAQ connections.
 
 Acquisition
------------
+^^^^^^^^^^^
 
 .. _what-is-it-4:
 
-What is it?
-^^^^^^^^^^^
+**What is it?**
 
 Acquisition is the step where the DAQ device collects real-world signals
 and converts them into digital data that the computer can use. Sensors
@@ -783,8 +780,7 @@ from the sensor and turns it into a stream of numbers.
 In simple terms, acquisition is how the computer “listens” to the
 physical world.
 
-Key acquisition settings
-^^^^^^^^^^^^^^^^^^^^^^^^
+**Key acquisition settings**
 
 When engineers acquire data, they need to choose settings that match the
 signal they are trying to measure. Three important settings are sampling
@@ -819,8 +815,7 @@ rate, resolution, and input range.
 |                                   |   measurement quality.            |
 +-----------------------------------+-----------------------------------+
 
-Why does this matter?
-^^^^^^^^^^^^^^^^^^^^^
+**Why does this matter?**
 
 Acquisition matters because poor data collection leads to poor
 decisions. If the sampling rate is too slow, the system may miss
@@ -830,8 +825,7 @@ low, small changes may be hidden.
 
 Good acquisition settings help make data readable, useful, and reliable.
 
-How does this apply in our project?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**How does this apply in our project?**
 
 In the greenhouse project, the thermistor responds to changes in
 temperature and produces a signal that the mioDAQ can measure. The
@@ -851,7 +845,7 @@ The quality of the data you collect directly impacts the decisions your
 system will make later, such as whether a warning LED should turn on.
 
 How would you do this in LabVIEW code?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 
 |image7|\ Before we get into the LabVIEW code, let’s talk about the
 basic parts of LabVIEW.
@@ -860,8 +854,7 @@ Think of LabVIEW as a graphical programming language. Instead of writing
 lines of text-based code, you create programs by connecting functional
 blocks together.
 
-Understanding the LabVIEW Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Understanding the LabVIEW Environment**
 
 LabVIEW has two primary workspaces:
 
@@ -902,8 +895,7 @@ Wires
 - |image9|\ Think of wires as the roads that carry information from one
   part of your program to another.
 
-Useful Keyboard Shortcuts
-^^^^^^^^^^^^^^^^^^^^^^^^^
+**Useful Keyboard Shortcuts**
 
 +-----------+----------------------------------------------------------+
 | Shortcut  | Purpose                                                  |
@@ -958,7 +950,7 @@ So, this brings up the question, how do we analyze the data into
 readable data?
 
 How would you do this in Python code?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 
 But before we analyze our data, let’s see how we can do the same
 workflow in Python!
@@ -1021,12 +1013,11 @@ Now that we have initialized and set up continuous sampling, we can
 analyze our data to ensure that we can read the measurements.
 
 Analysis
---------
+^^^^^^^^
 
 .. _what-is-it-5:
 
-What is it?
-^^^^^^^^^^^
+**What is it?**
 
 Analysis is the step where raw data is turned into useful information.
 After the DAQ collects measurements, engineers need to inspect the data,
@@ -1035,8 +1026,7 @@ calculate values, identify trends, and decide what the data means.
 In simple terms, analysis is how engineers turn numbers into
 understanding.
 
-Different analysis tools
-^^^^^^^^^^^^^^^^^^^^^^^^
+**Different analysis tools**
 
 Engineers use different tools depending on the complexity of the data
 and the goal of the test. Some tools are better for quick calculations,
@@ -1067,8 +1057,7 @@ systems.
 
 .. _why-does-this-matter-1:
 
-Why does this matter?
-^^^^^^^^^^^^^^^^^^^^^
+**Why does this matter?**
 
 Data by itself is not enough. Engineers need to analyze data so they can
 understand what happened, compare results, find patterns, and make
@@ -1077,8 +1066,7 @@ evidence-based decisions.
 This is why data is powerful: it gives engineers a way to move from
 guessing to knowing.
 
-How does this apply to our project?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**How does this apply to our project?**
 
 In the greenhouse project, students can analyze the temperature data
 collected from the thermistor. You can look at how the temperature
@@ -1096,7 +1084,7 @@ desired range.
 - Summarize the results in a short report.
 
 What does this look like in LabVIEW?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 
 .. figure:: _static/media/image14.png
    :width: 3.66319in
@@ -1165,7 +1153,7 @@ This part of the code:
 - Executes different actions depending on the result.
 
 What does this look like in Python?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 .. figure:: _static/media/image18.emf
 
@@ -1228,61 +1216,43 @@ Figure 14. Examples of Graphs after code executes in LabVIEW and Python.
 We can finally take our data and make a decision!
 
 Decision
---------
+^^^^^^^^
 
 .. _what-is-it-6:
 
-What is it?
-^^^^^^^^^^^
+**What is it?**
 
 Decision making is the final step of the measurement chain, where engineers use analyzed data to determine what action should happen next. Once we know what the data means, we can decide how the system should respond.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Examples of decisions include:**
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Passing or failing a product during testing
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Passing or failing a product during testing
 
-Triggering an alarm or warning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Triggering an alarm or warning
 
-Adjusting a control output
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Adjusting a control output
 
-Turning equipment on or off
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Turning equipment on or off
 
 In simple terms, decision making is how data becomes action.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _why-does-this-matter-2:
 
-Why does this matter?
-^^^^^^^^^^^^^^^^^^^^^
+**Why does this matter?**
 
 Collecting data is only useful if it helps us make better decisions. Engineers use measurements, requirements, and thresholds to determine whether a system is behaving as expected and what should happen next.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Good decisions depend on:**
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Reliable measurements
-^^^^^^^^^^^^^^^^^^^^^
+- Reliable measurements
 
-Accurate analysis
-^^^^^^^^^^^^^^^^^
+- Accurate analysis
 
-Clearly defined requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Clearly defined requirements
 
 Without a decision, the measurement process does not lead to action.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _how-does-this-apply-to-our-project-1:
-
-How does this apply to our project?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**How does this apply to our project?**
 
 In our greenhouse, measuring the temperature is only part of the
 solution. Once we know the temperature, we need to decide whether any
