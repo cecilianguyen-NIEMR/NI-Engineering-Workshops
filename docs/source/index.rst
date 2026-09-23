@@ -8,11 +8,11 @@ searchable format that students can use during and after the workshop.
 Start here
 ----------
 
-:doc:`Open the Level 1 Student Manual <usage>`
+:doc:`Open the Level 1 Student Manual <level1>`
 
 .. toctree::
    :maxdepth: 2
    :caption: Student Manual
    :hidden:
 
-   usage
+   level1
