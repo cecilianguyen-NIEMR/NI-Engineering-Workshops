@@ -108,7 +108,10 @@ deployment. At each stage, testing helps reduce risk, uncover problems
 early, and build confidence that the final product will work as
 intended.
 
-|image2|\ 
+.. figure:: _static/media/image2.png
+:width: 80%
+:align: center
+
 Figure 1. Product Development Life Cycle diagram.
 
 A common misconception is that testing only happens once a product is
