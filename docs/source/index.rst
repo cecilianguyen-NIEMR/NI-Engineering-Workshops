@@ -37,6 +37,7 @@ Start here
    :caption: Student Manual
    :hidden:
 
-   level1
-   level2
+   Home <index>
+   Level 1: Foundations of Test & Engineering Thinking <level1>
+   Level 2: Foundations of Data Acquisition <level2>
 
