@@ -29,8 +29,8 @@ Ready to get started? Select a workshop level from the navigation menu and begin
 Start here
 ----------
 
-:doc:`Level 1 Student Manual <level1>`
-:doc:`Level 2 Student Manual <level2>`
+#. :doc:`Level 1 Student Manual <level1>`
+#. :doc:`Level 2 Student Manual <level2>`
 
 .. toctree::
    :maxdepth: 2
