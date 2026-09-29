@@ -109,8 +109,8 @@ early, and build confidence that the final product will work as
 intended.
 
 .. figure:: _static/media/image2.png
-:width: 80%
-:align: center
+   :width: 80%
+   :align: center
 
 Figure 1. Product Development Life Cycle diagram.
 
