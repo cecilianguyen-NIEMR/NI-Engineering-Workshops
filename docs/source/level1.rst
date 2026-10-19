@@ -17,27 +17,43 @@ About This Workshop
 Level 1 introduces the foundations of test engineering through a
 greenhouse temperature-monitoring challenge.
 
-This online version of the workshop uses a software simulation. Instead
+This online version of the workshop uses software simulations. Instead
 of connecting a physical thermistor and LEDs to measurement hardware,
 you will interact with a simulated thermistor, collect simulated
 temperature data, analyze the results, and observe how the system
 responds.
 
-The simulation follows the same engineering workflow used during the
+You will complete the simulation first in LabVIEW and then in Python.
+
+Both simulations follow the same engineering workflow used during the
 in-person workshop:
 
 **Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
 
 .. note::
 
-   During the in-person workshop, students use a real thermistor,
+   During the in-person workshop, students use a physical thermistor,
    warning LEDs, a breadboard, and an NI mioDAQ.
 
-   In this supplemental version, Python or LabVIEW generates the
-   temperature measurements and simulates the warning indicators.
+   In this online workshop, LabVIEW and Python generate the temperature
+   measurements and simulate the warning indicators.
 
    The source of the data is different, but the engineering process is
    the same.
+
+
+Learning Objectives
+-------------------
+
+By the end of this workshop, you should be able to:
+
+- Explain why engineers test products and systems.
+- Describe the role of testing throughout product development.
+- Identify the steps of the measurement chain.
+- Use LabVIEW and Python to run a simulated measurement system.
+- Compare measurements against engineering requirements.
+- Use measurement data to make a decision.
+- Explain how the simulation relates to a physical test system.
 
 
 Test in Engineering
@@ -71,7 +87,7 @@ that help answer one of the most important questions in engineering:
 Rather than relying on assumptions, engineers use measurements and data
 to verify that a product behaves as expected.
 
-Testing provides the evidence needed to answer questions such as:
+Testing provides evidence that helps answer questions such as:
 
 - Does the product work?
 - How well does it work?
@@ -83,7 +99,7 @@ Testing provides the evidence needed to answer questions such as:
 Hardware and Software Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Testing exists in many forms, but it often looks different depending on
+Testing exists in many forms, but it can look different depending on
 what is being tested.
 
 +------------------------------------+------------------------------------+
@@ -100,8 +116,8 @@ what is being tested.
 | Example: Medical device            | Example: Mobile application        |
 +------------------------------------+------------------------------------+
 
-This workshop focuses on the principles of hardware testing. However,
-the online activity uses software to simulate the behavior of a physical
+This workshop focuses on hardware-test principles. However, the online
+activity uses software to simulate the behavior of a physical
 measurement system.
 
 
@@ -131,10 +147,11 @@ For engineers, the lifecycle commonly includes:
 
    Figure 1. Product Development Life Cycle.
 
-Testing does not happen only after a product is finished. Engineers test
-ideas during research, verify design assumptions, evaluate prototypes,
-inspect products during manufacturing, and monitor performance after
-deployment.
+Testing does not happen only after a product is finished.
+
+Engineers test ideas during research, verify design assumptions,
+evaluate prototypes, inspect products during manufacturing, and monitor
+performance after deployment.
 
 Two especially important phases are:
 
@@ -244,13 +261,37 @@ Good testing requires engineers to:
 - Make evidence-based decisions
 
 
+Engineering Skills
+^^^^^^^^^^^^^^^^^^
+
+Throughout this program, you will practice:
+
+- Defining engineering problems
+- Working with sensors and measurements
+- Acquiring and analyzing data
+- Using evidence to make decisions
+- Troubleshooting systems
+- Communicating technical ideas
+- Applying engineering concepts to real-world scenarios
+
+These skills are used in many engineering roles, including:
+
+- Test Engineer
+- Validation Engineer
+- Automation Engineer
+- Systems Engineer
+- Controls Engineer
+- Manufacturing Engineer
+- Design Engineer
+
+
 The Measurement Chain
 ---------------------
 
 Engineering decisions begin with information from the physical world.
 
-The process of turning a real-world condition into useful information is
-called the **measurement chain**.
+The process of turning a real-world condition into useful information
+is called the **measurement chain**.
 
 .. image:: _static/media/image5.png
    :alt: Measurement chain
@@ -261,13 +302,14 @@ The measurement chain used in this workshop is:
 
 **Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
 
-In the in-person workshop, a thermistor and mioDAQ create and acquire a
-physical electrical signal.
+In the in-person workshop, a thermistor responds to temperature and the
+mioDAQ acquires an electrical signal from the thermistor circuit.
 
-In this supplemental workshop, software simulates the temperature and
-sensor response. The measurements are simulated, but the analysis,
-decision logic, indicators, and engineering thought process remain the
-same.
+In this online workshop, software simulates the temperature and sensor
+response.
+
+The measurements are simulated, but the analysis, decision logic,
+indicators, and engineering thought process remain the same.
 
 
 Simulated Greenhouse Challenge
@@ -295,34 +337,34 @@ The system must:
 - Provide a clear warning when conditions are unsafe.
 
 
-In-Person and Simulation Experiences
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In-Person and Online Experiences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Both versions follow the same measurement chain, but they generate and
 acquire data differently.
 
-+----------------------+--------------------------------+--------------------------------+
-| Step                 | In-Person Workshop             | Simulation Workshop            |
-+======================+================================+================================+
-| Physical phenomenon  | Real temperature               | Simulated temperature          |
-+----------------------+--------------------------------+--------------------------------+
-| Sensor               | Physical thermistor            | Simulated thermistor response  |
-+----------------------+--------------------------------+--------------------------------+
-| Signal               | Electrical voltage             | Software-generated value       |
-+----------------------+--------------------------------+--------------------------------+
-| Acquisition          | NI mioDAQ                       | Python or LabVIEW loop         |
-+----------------------+--------------------------------+--------------------------------+
-| Analysis             | Convert and compare data       | Compare simulated temperature  |
-+----------------------+--------------------------------+--------------------------------+
-| Decision             | Hot, cold, or acceptable       | Hot, cold, or acceptable       |
-+----------------------+--------------------------------+--------------------------------+
-| Action               | Physical warning LEDs          | Simulated LED indicators       |
-+----------------------+--------------------------------+--------------------------------+
++----------------------+------------------------------+------------------------------+
+| Step                 | In-Person Workshop           | Online Workshop              |
++======================+==============================+==============================+
+| Physical phenomenon  | Real temperature             | Simulated temperature        |
++----------------------+------------------------------+------------------------------+
+| Sensor               | Physical thermistor          | Simulated thermistor         |
++----------------------+------------------------------+------------------------------+
+| Signal               | Electrical voltage           | Software-generated value     |
++----------------------+------------------------------+------------------------------+
+| Acquisition          | NI mioDAQ                    | LabVIEW or Python loop       |
++----------------------+------------------------------+------------------------------+
+| Analysis             | Convert and compare data     | Compare simulated data       |
++----------------------+------------------------------+------------------------------+
+| Decision             | Hot, cold, or acceptable     | Hot, cold, or acceptable     |
++----------------------+------------------------------+------------------------------+
+| Action               | Physical warning LEDs        | Simulated indicators         |
++----------------------+------------------------------+------------------------------+
 
 .. important::
 
-   A simulation helps us study the logic and behavior of a measurement
-   system, but it does not replace every aspect of working with real
+   A simulation helps us study the behavior and logic of a measurement
+   system, but it does not replace every aspect of working with physical
    hardware.
 
    Real measurements can be affected by sensor accuracy, electrical
@@ -336,13 +378,22 @@ Physical Phenomenon
 A physical phenomenon is something happening in the real world that we
 want to observe or measure.
 
-Examples include temperature, pressure, force, motion, light, and sound.
+Examples include:
+
+- Temperature
+- Pressure
+- Force
+- Motion
+- Light
+- Sound
 
 For this project, the physical phenomenon is greenhouse temperature.
 
 In the in-person workshop, the temperature surrounding a physical
-thermistor changes. In the simulation, software creates a changing
-temperature value that represents greenhouse conditions.
+thermistor changes.
+
+In the simulation, software creates a changing temperature value that
+represents conditions inside the greenhouse.
 
 **Think About It**
 
@@ -357,12 +408,12 @@ Sensor
 A sensor detects a physical phenomenon and converts it into a signal
 that a measurement system can use.
 
-The in-person workshop uses a real thermistor. A thermistor changes
+The in-person workshop uses a thermistor. A thermistor changes
 resistance as its temperature changes.
 
-The simulation represents the thermistor in software.
+The online simulations represent the thermistor in software.
 
-Pressing **Heat Thermistor** or **Cool Thermistor** changes the
+Using the Heat Thermistor or Cool Thermistor control changes the
 simulated temperature that would normally be influenced by the physical
 sensor and its environment.
 
@@ -374,9 +425,10 @@ Signal conditioning prepares a sensor signal so it can be measured
 accurately and safely.
 
 A physical thermistor does not directly produce a temperature value that
-a computer can understand. It changes resistance. A circuit and
-measurement device convert that changing resistance into a measurable
-voltage.
+a computer can understand. It changes resistance.
+
+A circuit and measurement device convert that changing resistance into
+a measurable voltage.
 
 Signal conditioning can help:
 
@@ -388,33 +440,35 @@ Signal conditioning can help:
 - Address nonlinear sensor behavior
 - Improve measurement quality
 
-In the simulation, we do not physically condition an electrical signal.
-The program directly generates a simulated temperature.
+In the simulations, we do not physically condition an electrical
+signal. The programs directly generate simulated temperature values.
 
-This allows us to focus on the rest of the measurement chain, but it is
-important to remember that a real measurement system must account for
-the sensor's electrical behavior.
+This allows us to focus on the rest of the measurement chain.
+
+However, it is important to remember that a physical measurement system
+must account for the electrical behavior of the sensor.
 
 
 Acquisition
 ^^^^^^^^^^^
 
 Acquisition is the step where a system collects measurements and makes
-the data available to the computer.
+the data available to a computer.
 
 During the in-person workshop, the mioDAQ acquires voltage from the
 thermistor circuit.
 
-During the simulation, a timed software loop generates and records a new
-temperature value every 100 milliseconds.
+During the online workshop, a timed software loop generates and records
+new temperature values.
 
-The simulation begins at a room temperature of 70°F.
+The simulations begin at a temperature near 70°F.
 
-- Holding **Heat Thermistor** increases the simulated temperature.
-- Holding **Cool Thermistor** decreases the simulated temperature.
-- Releasing both buttons allows the temperature to move toward 70°F.
+- Using Heat Thermistor increases the simulated temperature.
+- Using Cool Thermistor decreases the simulated temperature.
+- Releasing the controls allows the temperature to move back toward the
+  simulated room temperature.
 
-Although the source is different, the program still collects a sequence
+Although the source is different, the programs still collect a sequence
 of measurements over time.
 
 
@@ -423,54 +477,420 @@ Analysis
 
 Analysis is the step where data becomes useful information.
 
-The simulation compares the current temperature against the greenhouse
+The simulations compare the current temperature against the greenhouse
 requirements:
 
 - Below 70°F means the greenhouse is too cold.
 - From 70°F through 85°F means the greenhouse is in the ideal range.
 - Above 85°F means the greenhouse is overheating.
 
-The simulation also records the temperature and elapsed time.
-
-When the simulation ends, Python displays a graph of temperature versus
-time so you can examine how the greenhouse changed during the test.
+The simulations also show how the temperature changes over time.
 
 
 Decision and Action
 ^^^^^^^^^^^^^^^^^^^
 
-The simulated system uses the following logic:
+The simulated systems use the following logic:
 
 +-------------------------+----------------+---------------------------+
 | Condition               | System Status  | Action                    |
 +=========================+================+===========================+
-| Temperature below 70°F  | TOO COLD       | Blue indicator turns on   |
+| Temperature below 70°F  | TOO COLD       | Blue indicator turns on  |
 +-------------------------+----------------+---------------------------+
-| Temperature from        | IDEAL          | Both indicators remain    |
+| Temperature from        | IDEAL          | Both indicators remain   |
 | 70°F through 85°F       |                | off                       |
 +-------------------------+----------------+---------------------------+
-| Temperature above 85°F  | OVERHEATING    | Red indicator turns on    |
+| Temperature above 85°F  | OVERHEATING    | Red indicator turns on   |
 +-------------------------+----------------+---------------------------+
 
 In a real greenhouse, the final action could activate a fan, heater,
 alarm, or ventilation system.
 
-In this simulation, the red and blue indicators communicate the
+In these simulations, the red and blue indicators communicate the
 decision without controlling physical equipment.
 
 
-Python Simulation
------------------
+Software Setup
+--------------
 
-What You Need
-^^^^^^^^^^^^^
+You will complete the greenhouse simulation twice:
 
-To complete the Python simulation, install:
+1. First in LabVIEW
+2. Then in Python
 
-- Python 3
-- Visual Studio Code
-- The Microsoft Python extension for Visual Studio Code
-- Matplotlib
+Both programs simulate the same measurement and decision process.
+
+LabVIEW uses graphical programming. Python uses text-based programming.
+
+Completing both versions will help you recognize how the same
+engineering process can be represented using different programming
+tools.
+
+
+Part 1: LabVIEW Simulation
+--------------------------
+
+What Is LabVIEW?
+^^^^^^^^^^^^^^^^
+
+LabVIEW is a graphical programming environment used to create test,
+measurement, and automation applications.
+
+Instead of writing only lines of text, LabVIEW programs are created by
+connecting functions and structures using wires.
+
+A LabVIEW program is called a **Virtual Instrument**, or **VI**.
+
+A VI contains two main workspaces:
+
+**Front Panel**
+   The user interface of the program. It contains controls, indicators,
+   graphs, buttons, and other elements used to interact with the
+   application.
+
+**Block Diagram**
+   The graphical programming workspace. It contains functions,
+   structures, wires, and the logic that controls the application.
+
+
+Install LabVIEW Community Edition for Free
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LabVIEW Community Edition is available for free for non-commercial use.
+
+.. important::
+
+   You need an NI account to download and activate LabVIEW Community
+   Edition.
+
+   Use the same NI account during both download and activation.
+
+Follow these steps:
+
+1. Open the `NI LabVIEW Community Edition download page
+   <https://www.ni.com/en/support/downloads/software-products/download.labview-community.html>`_.
+
+2. Select the available LabVIEW Community Edition release.
+
+3. Select the download option.
+
+4. Sign in with your NI account when prompted.
+
+5. If you do not have an NI account, create one and then return to the
+   LabVIEW Community Edition download page.
+
+6. Remember which account you use. You will use the same account to
+   activate LabVIEW.
+
+7. Run the downloaded installer.
+
+8. Follow the instructions displayed in the installer.
+
+9. Allow the installer to include NI License Manager.
+
+10. Restart your computer if prompted.
+
+11. Open LabVIEW after installation.
+
+
+Activate LabVIEW Community Edition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When LabVIEW opens:
+
+1. Select **Log in to Activate** when the activation prompt appears.
+
+2. Sign in with the same NI account used to download LabVIEW Community
+   Edition.
+
+3. Follow the Activation Wizard instructions.
+
+4. Open LabVIEW after activation is complete.
+
+If the activation prompt does not appear:
+
+1. Open **NI License Manager**.
+
+2. Select **Activate Software**.
+
+3. Sign in with the same NI account used to download the software.
+
+4. Select **Check my account for licenses**.
+
+5. Select **Activate**.
+
+.. note::
+
+   Activation requires a network connection.
+
+   After Community Edition has been activated, LabVIEW can be used
+   offline.
+
+
+LabVIEW Installation Troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If Community Edition does not activate:
+
+1. Confirm that you installed LabVIEW Community Edition rather than a
+   commercial LabVIEW edition.
+
+2. Confirm that you are using the same NI account for download and
+   activation.
+
+3. Open NI License Manager.
+
+4. Open the **Local Licenses** tab.
+
+5. Expand the installed LabVIEW version.
+
+6. Locate Community Edition.
+
+7. Right-click Community Edition and select **Activate**.
+
+If the activation still fails, use NI's activation support resources.
+
+
+Download the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Select the link below to download the LabVIEW greenhouse simulation:
+
+:download:`Download the LabVIEW Thermistor Simulation
+<_static/downloads/Simulation ThermistorWithLED (1).vi>`
+
+.. tip::
+
+   Save the VI somewhere easy to find, such as your Downloads folder.
+
+   Make sure the filename still ends in ``.vi``.
+
+
+Open the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open LabVIEW Community Edition.
+
+2. Select **File → Open**.
+
+3. Navigate to your Downloads folder.
+
+4. Select:
+
+.. code-block:: text
+
+   Simulation ThermistorWithLED (1).vi
+
+5. Select **Open**.
+
+The VI should open to its Front Panel.
+
+
+Explore the Front Panel
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The Front Panel is the part of the VI used to interact with the
+simulation.
+
+Locate the following controls and indicators:
+
+- High-temperature threshold
+- Low-temperature threshold
+- Current temperature
+- System status
+- Heat Thermistor control
+- Cool Thermistor control
+- High-temperature indicator
+- Low-temperature indicator
+- Temperature graph
+- Stop control
+
+The Front Panel represents an interface that a greenhouse operator could
+use to monitor system conditions.
+
+.. note::
+
+   If you have a screenshot of the LabVIEW Front Panel, place it in:
+
+   ``docs/source/_static/media/labview_simulation_front_panel.png``
+
+Then display it using:
+
+.. figure:: _static/media/labview_simulation_front_panel.png
+   :width: 85%
+   :align: center
+   :alt: LabVIEW greenhouse simulation Front Panel
+
+   LabVIEW greenhouse simulation Front Panel.
+
+
+Explore the Block Diagram
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Press ``Ctrl+E`` to switch between the Front Panel and Block Diagram.
+
+Look for the following elements:
+
+- While Loop
+- Temperature value
+- Heating and cooling logic
+- Timing function
+- Comparison functions
+- Boolean logic
+- Case Structure
+- Indicator terminals
+- Graph or chart terminal
+- Stop control
+
+.. note::
+
+   If you have a screenshot of the LabVIEW Block Diagram, place it in:
+
+   ``docs/source/_static/media/labview_simulation_block_diagram.png``
+
+Then display it using:
+
+.. figure:: _static/media/labview_simulation_block_diagram.png
+   :width: 95%
+   :align: center
+   :alt: LabVIEW greenhouse simulation Block Diagram
+
+   LabVIEW greenhouse simulation Block Diagram.
+
+Press ``Ctrl+E`` again to return to the Front Panel.
+
+
+Run the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Enter ``85`` for the high-temperature threshold.
+
+2. Enter ``70`` for the low-temperature threshold.
+
+3. Select the **Run** arrow near the upper-left corner of the LabVIEW
+   window.
+
+4. Observe the current simulated temperature.
+
+5. Use the Heat Thermistor and Cool Thermistor controls to change the
+   simulated greenhouse temperature.
+
+6. Use the Stop control to end the simulation.
+
+
+LabVIEW Test 1: Normal Conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Allow the VI to run without selecting Heat or Cool.
+
+Observe:
+
+- The current temperature
+- The system status
+- The high-temperature indicator
+- The low-temperature indicator
+
+**Think About It**
+
+- Is the greenhouse within the required temperature range?
+- Are either of the warning indicators active?
+- What evidence shows that the system is operating normally?
+
+
+LabVIEW Test 2: Overheating
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the Heat Thermistor control until the simulated temperature rises
+above 85°F.
+
+Observe:
+
+- The temperature when the status changes
+- The high-temperature indicator
+- The low-temperature indicator
+- The temperature graph
+
+**Think About It**
+
+- Why does the high-temperature indicator remain off at exactly 85°F?
+- What comparison causes the indicator to turn on?
+- What physical device could replace the indicator in a real greenhouse?
+
+
+LabVIEW Test 3: Recovery
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Release the Heat Thermistor control.
+
+Observe what happens as the simulated temperature returns toward room
+temperature.
+
+**Think About It**
+
+- When does the high-temperature indicator turn off?
+- When does the status return to IDEAL?
+- Is the VI measuring, analyzing, and deciding continuously?
+
+
+LabVIEW Test 4: Too Cold
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the Cool Thermistor control until the simulated temperature falls
+below 70°F.
+
+Observe:
+
+- The temperature when the status changes
+- The low-temperature indicator
+- The high-temperature indicator
+- The temperature graph
+
+**Think About It**
+
+- Why does the low-temperature indicator remain off at exactly 70°F?
+- What comparison causes the indicator to turn on?
+- What action could a physical greenhouse system take?
+
+
+Stop the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the Stop control on the Front Panel to stop the VI.
+
+Do not use the Abort Execution button as the normal way to stop the
+program.
+
+Review the graph and identify:
+
+1. When heating began
+2. When the temperature exceeded 85°F
+3. When the temperature returned to the acceptable range
+4. When cooling began
+5. When the temperature fell below 70°F
+6. When both warning indicators were off
+
+
+Part 2: Python Simulation
+-------------------------
+
+What Is Python?
+^^^^^^^^^^^^^^^
+
+Python is a text-based programming language used for software
+development, data analysis, automation, scientific computing, and test
+applications.
+
+The Python activity simulates the same greenhouse system as the LabVIEW
+VI.
+
+You will compare how LabVIEW and Python represent:
+
+- Continuous execution
+- Temperature changes
+- Thresholds
+- Boolean decisions
+- Indicators
+- Data visualization
 
 
 Install Python
@@ -494,7 +914,7 @@ On Windows, open a terminal and verify the installation:
 
    py --version
 
-If that command is not recognized, try:
+If the command is not recognized, try:
 
 .. code-block:: console
 
@@ -551,6 +971,9 @@ Select the Python Interpreter
 Install Matplotlib
 ^^^^^^^^^^^^^^^^^^
 
+The Python program uses Matplotlib to create a temperature graph after
+the simulation ends.
+
 In Visual Studio Code, select:
 
 **Terminal → New Terminal**
@@ -572,9 +995,9 @@ Download the Python Simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Select the link below to download the complete Python greenhouse
-simulation.
+simulation:
 
-:download:`Download Simulation ThermistorWithLED Python.py
+:download:`Download the Python Thermistor Simulation
 <_static/downloads/Simulation ThermistorWithLED Python.py>`
 
 .. tip::
@@ -587,7 +1010,7 @@ simulation.
 View the Python Code Online
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can review the complete Python program below before downloading it.
+The complete Python program is displayed below.
 
 .. literalinclude:: _static/downloads/Simulation ThermistorWithLED Python.py
    :language: python
@@ -596,16 +1019,20 @@ You can review the complete Python program below before downloading it.
    :name: python-greenhouse-simulation
 
 
-Open the Downloaded Python Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open the Python Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Open Visual Studio Code.
 
 2. Select **File → Open File**.
 
-3. Select ``Simulation ThermistorWithLED Python.py``.
+3. Select:
 
-4. Confirm that a Python interpreter is selected.
+.. code-block:: text
+
+   Simulation ThermistorWithLED Python.py
+
+4. Confirm that the correct Python interpreter is selected.
 
 5. Select the **Run Python File** button in the upper-right corner.
 
@@ -613,56 +1040,48 @@ Open the Downloaded Python Code
 Enter the Temperature Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A terminal will open at the bottom of Visual Studio Code.
+The terminal will ask for the high-temperature threshold.
 
-Enter the high-temperature threshold:
-
-.. code-block:: text
-
-   Enter the high temperature threshold in °F: 85
-
-Then enter the low-temperature threshold:
+Enter:
 
 .. code-block:: text
 
-   Enter the low temperature threshold in °F: 70
+   85
+
+The terminal will then ask for the low-temperature threshold.
+
+Enter:
+
+.. code-block:: text
+
+   70
 
 Press **Enter** after each value.
 
 The simulated front panel will open in a separate window.
 
 
-Explore the Simulated Front Panel
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Explore the Python Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The simulated front panel includes:
+Locate the following elements:
 
-**Temperature**
-   Displays the current simulated temperature in Fahrenheit and Celsius.
+- Temperature in Fahrenheit
+- Temperature in Celsius
+- System status
+- High-temperature indicator
+- Low-temperature indicator
+- Heat Thermistor button
+- Cool Thermistor button
 
-**Status**
-   Displays IDEAL, TOO COLD, or OVERHEATING.
-
-**High indicator**
-   Represents the red warning LED in the in-person system.
-
-**Low indicator**
-   Represents the blue warning LED in the in-person system.
-
-**Heat Thermistor**
-   Increases the simulated temperature while the button is held.
-
-**Cool Thermistor**
-   Decreases the simulated temperature while the button is held.
+The terminal also prints updated temperature and indicator information
+while the simulation runs.
 
 
-Python Simulation Activity
---------------------------
+Python Test 1: Normal Conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Test 1: Normal Conditions
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Allow the simulation to run without pressing either button.
+Allow the program to run without using Heat or Cool.
 
 Observe:
 
@@ -673,246 +1092,177 @@ Observe:
 
 **Think About It**
 
-- Is the greenhouse within the acceptable range?
-- Are either of the warning indicators on?
-- Does the system meet the greenhouse requirement?
+- Is the simulated greenhouse within the acceptable range?
+- Are either of the warning indicators active?
+- Does the system meet the temperature requirement?
 
 
-Test 2: Overheating
-^^^^^^^^^^^^^^^^^^^
+Python Test 2: Overheating
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Press and hold **Heat Thermistor**.
-
-Continue heating until the temperature rises above the high threshold.
+Press and hold **Heat Thermistor** until the temperature rises above
+85°F.
 
 Observe:
 
-- The temperature at which the status changes
-- The text displayed in the status window
+- The temperature when the status changes
 - The red indicator
 - The blue indicator
-
-**Think About It**
-
-- Why does the red indicator remain off at exactly 85°F?
-- At what point does the Boolean condition become true?
-- What real greenhouse action could replace the red indicator?
+- The terminal output
 
 
-Test 3: Recovery
-^^^^^^^^^^^^^^^^
+Python Test 3: Recovery
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Release the **Heat Thermistor** button.
+Release the Heat Thermistor button.
 
-Observe how the simulated temperature moves toward room temperature.
+Observe what happens as the temperature moves back toward room
+temperature.
 
-Watch what happens when the temperature returns to the acceptable range.
-
-**Think About It**
-
-- When does the red indicator turn off?
-- What causes the status to return to IDEAL?
-- Is the system measuring, analyzing, and deciding continuously?
+Watch the status and warning indicators as the temperature returns to
+the acceptable range.
 
 
-Test 4: Too Cold
-^^^^^^^^^^^^^^^^
+Python Test 4: Too Cold
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Press and hold **Cool Thermistor**.
-
-Continue cooling until the temperature falls below the low threshold.
+Press and hold **Cool Thermistor** until the temperature falls below
+70°F.
 
 Observe:
 
-- The temperature at which the status changes
+- The temperature when the status changes
 - The blue indicator
-- The status display
+- The red indicator
 - The terminal output
 
-**Think About It**
 
-- Why does the blue indicator remain off at exactly 70°F?
-- What action might a real greenhouse system take?
-- How is the decision connected to the greenhouse requirement?
+Analyze the Python Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-Test 5: Analyze the Data
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Close the simulation window after testing the hot, ideal, and cold
-conditions.
+Close the simulated Python front panel after testing the hot, ideal, and
+cold conditions.
 
 The program will display:
 
 - A message showing that the simulation stopped
 - The number of simulated readings collected
 - A graph of temperature versus time
+- The high-temperature threshold
+- The low-temperature threshold
+- The room-temperature reference
 
 Use the graph to identify:
 
 1. When heating began
-2. When the greenhouse exceeded 85°F
-3. When the temperature returned to the ideal range
+2. When the temperature exceeded 85°F
+3. When the temperature returned to the acceptable range
 4. When cooling began
-5. When the greenhouse fell below 70°F
-6. When both warning indicators were off
+5. When the temperature fell below 70°F
+6. When the greenhouse was in the ideal range
 
 
-Optional LabVIEW Simulation
----------------------------
+Compare LabVIEW and Python
+--------------------------
 
-LabVIEW is a graphical programming environment. Instead of writing only
-text-based instructions, LabVIEW programs are created by connecting
-functions and structures with wires.
+LabVIEW and Python use different programming styles, but they implement
+the same engineering process.
 
-The LabVIEW simulation follows the same greenhouse requirements and
-measurement-chain workflow as the Python simulation.
++----------------------+------------------------------+------------------------------+
+| Engineering Step     | LabVIEW                      | Python                       |
++======================+==============================+==============================+
+| User interface       | Front Panel                  | Tkinter window               |
++----------------------+------------------------------+------------------------------+
+| Continuous execution | While Loop                   | Scheduled update loop        |
++----------------------+------------------------------+------------------------------+
+| Timing               | Timing function              | Update interval              |
++----------------------+------------------------------+------------------------------+
+| Requirements         | Numeric controls/constants   | Threshold variables          |
++----------------------+------------------------------+------------------------------+
+| Analysis             | Comparison functions         | Conditional comparisons      |
++----------------------+------------------------------+------------------------------+
+| Decision             | Boolean/Case Structure logic | If/elif/else logic           |
++----------------------+------------------------------+------------------------------+
+| Indicators           | Front Panel indicators       | Simulated LED indicators     |
++----------------------+------------------------------+------------------------------+
+| Visualization        | Graph or chart               | Matplotlib graph             |
++----------------------+------------------------------+------------------------------+
 
+**Think About It**
 
-Install LabVIEW Community Edition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Visit the `NI LabVIEW Community Edition download page
-   <https://www.ni.com/en/support/downloads/software-products/download.labview-community.html>`_.
-
-2. Sign in with an NI account or create an account.
-
-3. Select LabVIEW Community Edition.
-
-4. Run the installer.
-
-5. Follow the installation prompts.
-
-6. Open LabVIEW after installation.
-
-7. Complete any required sign-in or activation prompts.
-
-
-Download the LabVIEW Simulation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Select the link below to download the LabVIEW greenhouse simulation.
-
-:download:`Download Simulation ThermistorWithLED (1).vi
-<_static/downloads/Simulation ThermistorWithLED (1).vi>`
-
-.. note::
-
-   A LabVIEW VI cannot be displayed as text on this page in the same way
-   as the Python program.
-
-   Download the VI and open it in LabVIEW to view the Front Panel and
-   Block Diagram.
+- What parts of the LabVIEW and Python implementations are similar?
+- What parts are represented differently?
+- Which programming elements perform the analysis?
+- Which programming elements produce the action?
+- How does each program communicate the system state?
 
 
-Open the LabVIEW Simulation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Connecting the Simulations to the Measurement Chain
+---------------------------------------------------
 
-1. Open LabVIEW.
+Physical Phenomenon
+^^^^^^^^^^^^^^^^^^^
 
-2. Select **File → Open**.
-
-3. Select ``Simulation ThermistorWithLED (1).vi``.
-
-4. Open the Front Panel.
-
-5. Select the **Run** arrow.
-
-6. Follow the instructions displayed on the Front Panel.
+The physical phenomenon represented by both simulations is greenhouse
+temperature.
 
 
-The LabVIEW Front Panel
-^^^^^^^^^^^^^^^^^^^^^^^
+Sensor
+^^^^^^
 
-The Front Panel is the user interface of a LabVIEW program.
-
-Use the Front Panel to:
-
-- Enter the high and low temperature thresholds
-- Heat or cool the simulated thermistor
-- View the current temperature
-- View the simulated warning indicators
-- Stop the simulation
-
-If you have a screenshot of the simulated Front Panel, add it to:
-
-.. code-block:: text
-
-   docs/source/_static/media/labview_simulation_front_panel.png
-
-Then display it here:
-
-.. figure:: _static/media/labview_simulation_front_panel.png
-   :width: 85%
-   :align: center
-   :alt: LabVIEW greenhouse simulation Front Panel
-
-   LabVIEW greenhouse simulation Front Panel.
+Both programs simulate the response of a thermistor as temperature
+changes.
 
 
-The LabVIEW Block Diagram
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Acquisition
+^^^^^^^^^^^
 
-The Block Diagram contains the graphical code that controls the
-simulation.
-
-Look for the following programming elements:
-
-- While Loop
-- Timing function
-- Simulated temperature value
-- Comparison functions
-- Boolean logic
-- Case Structure
-- Graph or chart
-- Stop control
-
-If you have a screenshot of the simulated Block Diagram, add it to:
-
-.. code-block:: text
-
-   docs/source/_static/media/labview_simulation_block_diagram.png
-
-Then display it here:
-
-.. figure:: _static/media/labview_simulation_block_diagram.png
-   :width: 95%
-   :align: center
-   :alt: LabVIEW greenhouse simulation Block Diagram
-
-   LabVIEW greenhouse simulation Block Diagram.
+LabVIEW and Python repeatedly generate and collect simulated temperature
+measurements.
 
 
-Python and LabVIEW Comparison
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Analysis
+^^^^^^^^
 
-The Python and LabVIEW programs look different, but they follow the same
-engineering process.
+Both programs compare the current temperature against high and low
+thresholds.
 
-+----------------------+--------------------------------+--------------------------------+
-| Engineering Step     | Python                         | LabVIEW                        |
-+======================+================================+================================+
-| Continuous execution | Tkinter callback loop          | While Loop                     |
-+----------------------+--------------------------------+--------------------------------+
-| Timing               | Scheduled update interval      | Timing function                |
-+----------------------+--------------------------------+--------------------------------+
-| Requirements         | Threshold variables            | Numeric controls or constants  |
-+----------------------+--------------------------------+--------------------------------+
-| Analysis             | Conditional statements         | Comparison functions           |
-+----------------------+--------------------------------+--------------------------------+
-| Decision             | If/elif/else logic             | Boolean or Case Structure logic|
-+----------------------+--------------------------------+--------------------------------+
-| Display              | Tkinter interface              | Front Panel indicators         |
-+----------------------+--------------------------------+--------------------------------+
-| Visualization        | Matplotlib plot                | Waveform chart or graph        |
-+----------------------+--------------------------------+--------------------------------+
 
-The programming syntax is different, but the engineering thinking is
-the same.
+Decision
+^^^^^^^^
+
+Both programs determine whether the greenhouse is:
+
+- Too hot
+- Too cold
+- Within the acceptable range
+
+
+Action
+^^^^^^
+
+The red or blue simulated indicator turns on when the corresponding
+condition is true.
+
+The indicator turns off when the condition is no longer true.
 
 
 Troubleshooting
 ---------------
+
+The LabVIEW VI Will Not Open
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Confirm that:
+
+- LabVIEW Community Edition is installed.
+- The VI downloaded successfully.
+- The filename still ends in ``.vi``.
+- You are opening the VI from inside LabVIEW.
+
+A VI created in a newer LabVIEW release may not open in an older
+LabVIEW release.
+
 
 Python Is Not Recognized
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -940,7 +1290,7 @@ If the program reports:
 
    ModuleNotFoundError: No module named 'matplotlib'
 
-Open a Visual Studio Code terminal and run:
+Run:
 
 .. code-block:: console
 
@@ -953,13 +1303,13 @@ If necessary, use:
    python -m pip install matplotlib
 
 
-The Program Appears to Be Waiting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Python Program Appears to Be Waiting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check the terminal at the bottom of Visual Studio Code.
 
-The program asks for the high and low temperature thresholds before
-opening the simulated front panel.
+The program asks for the high and low thresholds before opening the
+simulated front panel.
 
 Enter:
 
@@ -974,70 +1324,57 @@ and then:
    70
 
 
-The LabVIEW VI Will Not Open
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Confirm that:
-
-- LabVIEW is installed.
-- The VI download completed.
-- The file still has the ``.vi`` extension.
-- You are opening the VI from inside LabVIEW.
-
-A VI saved in a newer LabVIEW version may not open in an older LabVIEW
-version.
-
-
 Reflection Questions
 --------------------
 
-After completing the simulation, answer the following questions:
+After completing both simulations, answer the following questions:
 
-1. What physical phenomenon was represented by the simulation?
+1. What physical phenomenon was represented by the simulations?
 
-2. What sensor did the software simulate?
+2. What sensor did LabVIEW and Python simulate?
 
-3. How did the program acquire new temperature values?
+3. How did each program acquire new temperature values?
 
 4. What requirements were used to analyze the data?
 
-5. How did the program determine whether the greenhouse was safe?
+5. How did the programs determine whether the greenhouse was safe?
 
 6. What actions occurred when the temperature crossed a threshold?
 
-7. How would the experience differ if a real thermistor and mioDAQ were
-   used?
+7. How did the LabVIEW and Python implementations differ?
 
-8. What measurement challenges can occur with real hardware that are not
-   represented by the simulation?
+8. How would the experience change if a physical thermistor and mioDAQ
+   were used?
 
-9. What evidence shows that the system behaved as expected?
+9. What physical measurement challenges are not represented in the
+   simulations?
 
-10. Did the results show that the simulated system met its requirements?
+10. What evidence shows that each system behaved as expected?
 
 
 Summary
 -------
 
-Throughout this workshop, you followed the same general process that
-test engineers use to understand and interact with the world around
-them.
+Throughout this workshop, you followed the same process that test
+engineers use to understand and interact with the world around them.
 
 You began with a physical phenomenon: greenhouse temperature.
 
-The software represented the response of a temperature sensor, acquired
-simulated measurements, analyzed the temperature, compared it against
-requirements, made a decision, and updated warning indicators.
+LabVIEW and Python represented the response of a temperature sensor,
+acquired simulated measurements, analyzed the data, compared the
+temperature against requirements, made decisions, and updated the
+warning indicators.
 
 Together, these steps form the measurement chain:
 
 **Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
 
-The simulation does not replace every aspect of real measurement
-hardware. It removes physical variables such as wiring, electrical
-noise, sensor tolerance, input configuration, and signal conditioning.
+The simulations do not replace every aspect of physical measurement
+hardware. They remove variables such as wiring, electrical noise,
+sensor tolerance, input configuration, grounding, and signal
+conditioning.
 
-However, it allows you to practice the engineering workflow and
+However, they allow you to practice the engineering workflow and
 understand how measurements become decisions.
 
 Most importantly, you made your first simulated measurement and used
@@ -1051,18 +1388,18 @@ Get Certified for Level 1
 
 You have completed the Level 1 online workshop!
 
-To receive credit for completing Level 1, complete the online feedback
-survey using the link below.
+After completing both the LabVIEW and Python simulations, complete the
+Level 1 feedback survey to receive credit for the workshop.
 
 `Complete the Level 1 Feedback Survey and Certification Form
 <https://forms.cloud.microsoft/r/0LK7kuz1Xx>`_
 
 .. important::
 
-   Complete the survey after finishing the Python or LabVIEW simulation.
+   Complete both simulations before submitting the survey.
 
    Make sure the information you submit is accurate so your Level 1
-   workshop completion can be recorded.
+   completion can be recorded.
 
 
 Looking Ahead
