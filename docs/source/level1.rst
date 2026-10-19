@@ -6,9 +6,39 @@ Level 1: Foundations of Test & Engineering Thinking
    :align: center
    :width: 80%
 
-.. contents:: On this page
+.. contents:: On This Page
    :local:
    :depth: 2
+
+
+About This Workshop
+-------------------
+
+Level 1 introduces the foundations of test engineering through a
+greenhouse temperature-monitoring challenge.
+
+This online version of the workshop uses a software simulation. Instead
+of connecting a physical thermistor and LEDs to measurement hardware,
+you will interact with a simulated thermistor, collect simulated
+temperature data, analyze the results, and observe how the system
+responds.
+
+The simulation follows the same engineering workflow used during the
+in-person workshop:
+
+**Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
+
+.. note::
+
+   During the in-person workshop, students use a real thermistor,
+   warning LEDs, a breadboard, and an NI mioDAQ.
+
+   In this supplemental version, Python or LabVIEW generates the
+   temperature measurements and simulates the warning indicators.
+
+   The source of the data is different, but the engineering process is
+   the same.
+
 
 Test in Engineering
 -------------------
@@ -16,19 +46,18 @@ Test in Engineering
 Every day, we interact with products that we rarely think twice about.
 
 - You expect your phone to connect to Wi-Fi.
-
-- You expect your car to start when you turn the key.
-
+- You expect your car to start.
 - You expect your headphones to connect to Bluetooth.
-
 - You expect the elevator to stop at the correct floor.
-
 - You expect your GPS to tell you where you are.
 
-But how do we know these systems will work? The answer is testing!
+But how do we know these systems will work?
 
-What is it?
-^^^^^^^^^^^
+The answer is testing.
+
+
+What Is Test?
+^^^^^^^^^^^^^
 
 Test in engineering is the process of evaluating the performance,
 reliability, safety, and quality of a product before it reaches the
@@ -36,1321 +65,1019 @@ customer.
 
 Engineers design experiments, collect data, and build automated systems
 that help answer one of the most important questions in engineering:
-"How do we know this works?"
 
-Their goal is to find problems before customers do. Rather than relying
-on assumptions, test engineers use measurements and data to verify that
-a product behaves as expected.
+**How do we know this works?**
 
-Hardware vs. Software Test
+Rather than relying on assumptions, engineers use measurements and data
+to verify that a product behaves as expected.
+
+Testing provides the evidence needed to answer questions such as:
+
+- Does the product work?
+- How well does it work?
+- What happens if it fails?
+- Does it meet its requirements?
+- How can it be improved?
+
+
+Hardware and Software Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Testing exists everywhere, but it often looks different depending on
+Testing exists in many forms, but it often looks different depending on
 what is being tested.
 
-+------------------------------------+---------------------------------+
-| Hardware Testing                   | Software Testing                |
-+====================================+=================================+
-| Tests physical products            | Tests software and applications |
-+------------------------------------+---------------------------------+
-| Uses sensors, instruments, code,   | Uses code and test scripts      |
-| and test scripts.                  |                                 |
-+------------------------------------+---------------------------------+
-| Focuses on real-world performance  | Focuses on functionality and    |
-| and reliability                    | user experience                 |
-+------------------------------------+---------------------------------+
-| Example: Medical device            | Example: Mobile app             |
-+------------------------------------+---------------------------------+
++------------------------------------+------------------------------------+
+| Hardware Testing                   | Software Testing                   |
++====================================+====================================+
+| Tests physical products            | Tests software and applications    |
++------------------------------------+------------------------------------+
+| Uses sensors, instruments, code,   | Uses code and test scripts         |
+| and test systems                   |                                    |
++------------------------------------+------------------------------------+
+| Focuses on physical performance,   | Focuses on functionality and user  |
+| quality, and reliability           | experience                         |
++------------------------------------+------------------------------------+
+| Example: Medical device            | Example: Mobile application        |
++------------------------------------+------------------------------------+
 
-In our workshops, we are going to be focusing on hardware testing!
+This workshop focuses on the principles of hardware testing. However,
+the online activity uses software to simulate the behavior of a physical
+measurement system.
 
-Many students imagine engineers spending all day designing new things.
-
-While design is important, a huge part of engineering is asking
-questions:
-
-- Does this work?
-
-- How well does it work?
-
-- What happens if it fails?
-
-- How can we improve it?
-
-Testing provides the evidence needed to answer those questions.
-
-Products don't magically appear overnight. Every product follows a
-journey from an initial idea to something customers can use in the real
-world.
-
-To understand where testing fits into that journey, we first need to
-understand the Product Life Cycle.
 
 The Product Life Cycle
 ----------------------
 
-.. _what-is-it-1:
-
-What is it?
+What Is It?
 ^^^^^^^^^^^
 
-The Product Life Cycle (PLC) is the journey a product takes from an
-initial idea to something that customers use in the real world. From a
-business perspective, companies use the PLC to make decisions about
-pricing, marketing, and sales strategies. From an engineering
-perspective, the PLC helps teams design, build, test, and improve
-products while ensuring they meet requirements for performance,
-reliability, and safety.
+The Product Life Cycle is the journey a product takes from an initial
+idea to something customers use in the real world.
 
-For engineers, the lifecycle typically begins with an idea,
-followed by research, design, prototyping, validation, production, and
-deployment. At each stage, testing helps reduce risk, uncover problems
-early, and build confidence that the final product will work as
-intended.
+For engineers, the lifecycle commonly includes:
+
+- Research
+- Design
+- Prototyping
+- Verification and validation
+- Production
+- Deployment
+- Continued improvement
 
 .. figure:: _static/media/image2.png
    :width: 80%
    :align: center
+   :alt: Product Development Life Cycle diagram
 
-Figure 1. Product Development Life Cycle diagram.
+   Figure 1. Product Development Life Cycle.
 
-A common misconception is that testing only happens once a product is
-finished. Testing occurs throughout the entire product lifecycle.
-Engineers test ideas during research, verify design assumptions,
-evaluate prototypes, validate performance against requirements, inspect
-products during manufacturing, and monitor performance after deployment.
+Testing does not happen only after a product is finished. Engineers test
+ideas during research, verify design assumptions, evaluate prototypes,
+inspect products during manufacturing, and monitor performance after
+deployment.
 
-As products move through the lifecycle, the goals of testing evolve.
-Early testing focuses on learning and reducing uncertainty, while later
-testing focuses on ensuring consistency, quality, and reliability.
-Although testing is present at every stage, two phases play a
-particularly important role in bringing a product to market:
-**Verification &** **Validation** and **Production**.
+Two especially important phases are:
 
-**Verification & Validation (V&V)** answers the question: "Did we design
-the product correctly?"
+- **Verification and Validation**, or V&V
+- **Production**
 
-**Production** answers the question: "Did we build the product
-correctly?"
+**Verification and Validation asks:**
 
-Understanding the difference between these two phases is critical
-because together they help ensure that products are both designed to
-work and manufactured to work every time.
+   Did we design the product correctly?
 
-Verification and Validation (V&V) Testing
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Production testing asks:**
 
-.. _what-is-it-2:
+   Did we build the product correctly?
 
-What is it?
-"""""""""""
 
-Before a company invests time and money manufacturing thousands of
-units, engineers need confidence that the design will perform as
-expected in the real world. V&V testing is performed on prototypes and
-early product designs to verify functionality, performance, reliability,
-and safety.
+Verification and Validation Testing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-V&V testing can take many forms depending on the product and industry:
+Before a company manufactures thousands or millions of products,
+engineers need confidence that the design will perform as expected.
 
-+-----------------------------------+-----------------------------------+
-| Types of tests                    | Questions it answers              |
-+===================================+===================================+
-| Functional                        | - Does the product do what it was |
-|                                   |   designed to do?                 |
-|                                   |                                   |
-|                                   | - Do all features operate         |
-|                                   |   correctly?                      |
-+-----------------------------------+-----------------------------------+
-| Performance                       | - How well does the product       |
-|                                   |   perform?                        |
-|                                   |                                   |
-|                                   | - Does it meet speed, accuracy,   |
-|                                   |   or throughput requirements?     |
-+-----------------------------------+-----------------------------------+
-| Reliability                       | - Will the product continue to    |
-|                                   |   work overtime?                  |
-|                                   |                                   |
-|                                   | - What happens after thousands or |
-|                                   |   millions of cycles?             |
-+-----------------------------------+-----------------------------------+
-| Environmental                     | - Can the product survive where   |
-|                                   |   it will be used?                |
-+-----------------------------------+-----------------------------------+
-| Stress                            | - What happens when the product   |
-|                                   |   is pushed beyond normal         |
-|                                   |   operating conditions?           |
-+-----------------------------------+-----------------------------------+
-| Safety                            | - Does the product operate safely |
-|                                   |   for users and the surrounding   |
-|                                   |   environment?                    |
-+-----------------------------------+-----------------------------------+
+V&V testing is performed on prototypes and early product designs to
+evaluate functionality, performance, reliability, safety, and other
+requirements.
 
-V&V Example: Boeing
-"""""""""""""""""""
++-------------------+--------------------------------------------------+
+| Type of Test      | Questions It Answers                             |
++===================+==================================================+
+| Functional        | Does the product do what it was designed to do?  |
++-------------------+--------------------------------------------------+
+| Performance       | How well does the product perform?               |
++-------------------+--------------------------------------------------+
+| Reliability       | Will it continue working over time?              |
++-------------------+--------------------------------------------------+
+| Environmental     | Can it survive where it will be used?            |
++-------------------+--------------------------------------------------+
+| Stress            | What happens outside normal conditions?          |
++-------------------+--------------------------------------------------+
+| Safety            | Does the product operate safely?                 |
++-------------------+--------------------------------------------------+
 
-A great example of Verification & Validation (V&V) testing comes from Boeing during the development of commercial aircraft systems. Before an aircraft ever enters service, engineers must verify that each subsystem meets its design requirements and validate that the overall system performs as intended in real-world operating conditions.
-
-To accomplish this, Boeing engineers use automated test systems to
-simulate electrical signals, sensor inputs, and operating scenarios that
-the aircraft may encounter throughout its lifecycle. These tests help
-engineers evaluate system behavior, identify potential issues early in
-development, and confirm that safety, reliability, and performance
-requirements have been met before the aircraft reaches customers.
-
-|image3|
-
-Figure 2. A quote from one of Boeing’s engineers describing how they ran
-their tests.
-
-The key lesson from the Boeing example is that V&V testing goes beyond
-answering: "Did we reduce noise?"
-
-Instead, engineers ask:
-
-1. "How well does it work?"
-
-2. "Will it continue working overtime?"
-
-3. "Does it perform consistently?"
-
-4. "Can we trust it in a real-world application?"
-
-Verification and Validation provides the confidence that the design
-itself is ready for customers before production begins.
-
-Once engineers have confidence that the design works, the focus shifts.
-While V&V focuses on proving the design, production testing focuses on
-ensuring that every unit leaving the factory meets the same quality and
-performance standards.
 
 Production Testing
 ^^^^^^^^^^^^^^^^^^
 
-.. _what-is-it-3:
-
-What is it?
-"""""""""""
-
-Once engineers have confidence that the design works, the next challenge
-is manufacturing thousands or even millions of identical products.
-Production testing takes place on the manufacturing floor and focuses on
-ensuring that every unit leaving the factory meets the same quality and
-performance standards.
-
-Unlike V&V testing, which is focused on learning about the design,
-production testing is focused on speed, consistency, and quality.
-
-Production testing can include several types of testing:
-
-+-----------------------------------+-----------------------------------+
-| Types of tests                    | Questions it answers              |
-+===================================+===================================+
-| Manufacturing                     | - Was the product assembled       |
-|                                   |   correctly?                      |
-|                                   |                                   |
-|                                   | - Are there wiring, soldering, or |
-|                                   |   component defects?              |
-|                                   |                                   |
-|                                   | - Does the hardware match the     |
-|                                   |   intended design?                |
-+-----------------------------------+-----------------------------------+
-| Safety                            | - Is the product safe for users   |
-|                                   |   and the surrounding             |
-|                                   |   environment?                    |
-|                                   |                                   |
-|                                   | - Does it meet electrical and     |
-|                                   |   regulatory safety requirements? |
-|                                   |                                   |
-|                                   | - Do protection mechanisms        |
-|                                   |   function correctly?             |
-+-----------------------------------+-----------------------------------+
-| Functional                        | - Does the product perform its    |
-|                                   |   intended function?              |
-|                                   |                                   |
-|                                   | - Do buttons, sensors,            |
-|                                   |   interfaces, and communications  |
-|                                   |   operate correctly?              |
-|                                   |                                   |
-|                                   | - Does the unit meet basic        |
-|                                   |   operational requirements?       |
-+-----------------------------------+-----------------------------------+
-| Performance & Calibration         | - Does the product meet accuracy, |
-|                                   |   speed, and performance          |
-|                                   |   specifications?                 |
-|                                   |                                   |
-|                                   | - Are measurements accurate and   |
-|                                   |   repeatable?                     |
-|                                   |                                   |
-|                                   | - Does the product require        |
-|                                   |   calibration to achieve the      |
-|                                   |   required performance?           |
-+-----------------------------------+-----------------------------------+
-| End-of- Line                      | - Has the complete product been   |
-|                                   |   verified before shipment?       |
-|                                   |                                   |
-|                                   | - Does the unit pass all required |
-|                                   |   tests and quality checks?       |
-|                                   |                                   |
-|                                   | - Is the product ready to be      |
-|                                   |   delivered to the customer?      |
-+-----------------------------------+-----------------------------------+
-
-Production Example: Xbox 360 Controller
-"""""""""""""""""""""""""""""""""""""""
-
-A great example of production testing comes from Microsoft and the Xbox
-360 controller. Once the controller design had been validated, Microsoft
-faced a new challenge: ensuring that every controller coming off the
-assembly line worked correctly and met quality standards before reaching
-customers.
-
-To accomplish this, Microsoft developed an automated production test
-system using NI LabVIEW and PXI modular instrumentation. The system
-allowed controllers to be tested quickly, consistently, and repeatedly
-during manufacturing. Rather than relying on manual inspection,
-automated test systems could verify that each controller functioned
-correctly before it was packaged and shipped.
-
-|Microsoft Uses NI LabVIEW and PXI Modular Instruments to Develop
-Production Test System for Xbox 360 Controllers - NI|
-
-Figure 3. Microsoft's application in LabVIEW and PXI Configuration used
-to test their controllers
-
-The key lesson from the Xbox example is that production testing is not
-trying to determine whether the controller design is good, that work was
-already completed during V&V.
-
-Instead, engineers are asking:
-
-1. "Does this controller work?"
-
-2. "Does the next controller work?"
-
-3. "Does every controller work?"
+Once engineers have confidence in the design, the next challenge is
+manufacturing products consistently.
 
-4. "Can we test them quickly enough to keep up with production?"
+Production testing occurs during manufacturing and helps ensure that
+each unit meets its quality and performance requirements.
 
-Production testing ensures that customers receive the same reliable
-product every time they open the box.
+Unlike V&V, which focuses on learning about and proving the design,
+production testing focuses on:
 
-V&V vs. Production
-""""""""""""""""""
+- Speed
+- Repeatability
+- Quality
+- Consistency
+- Pass/fail decisions
 
-A simple way to remember the difference is:
 
-+-----------------------------+----------------------------------------+
-| Verification & Validation   | Production                             |
-+=============================+========================================+
-| Proves the design works     | Proves every manufactured unit works   |
-+-----------------------------+----------------------------------------+
-| Focuses on prototypes       | Focuses on finished products           |
-+-----------------------------+----------------------------------------+
-| Finds design issues         | Finds manufacturing issues             |
-+-----------------------------+----------------------------------------+
-| Learning and discovery      | Quality and consistency                |
-+-----------------------------+----------------------------------------+
-| "Did we design it           | "Did we build it correctly?"           |
-| correctly?"                 |                                        |
-+-----------------------------+----------------------------------------+
+V&V Versus Production
+^^^^^^^^^^^^^^^^^^^^^
 
-Together, V&V and production testing help engineers move from a
-promising idea to a reliable product that customers can trust. Whether
-we're validating a new force sensor at Peratech or testing Xbox
-controllers on a production line, the goal is the same: build confidence
-through measurement and data.
-
-Why does this all matter?
--------------------------
-
-At this point, we've talked about V&V testing and production testing.
-But a natural question is:
++--------------------------------+--------------------------------------+
+| Verification and Validation    | Production                           |
++================================+======================================+
+| Proves the design works        | Proves each manufactured unit works  |
++--------------------------------+--------------------------------------+
+| Focuses on prototypes          | Focuses on finished products         |
++--------------------------------+--------------------------------------+
+| Finds design issues            | Finds manufacturing issues           |
++--------------------------------+--------------------------------------+
+| Emphasizes learning            | Emphasizes quality and consistency    |
++--------------------------------+--------------------------------------+
+| “Did we design it correctly?”  | “Did we build it correctly?”         |
++--------------------------------+--------------------------------------+
 
-**Why do companies invest so much time, money, and effort into
-testing?**
 
-The answer is simple:
+Why Testing Matters
+-------------------
 
-**Products need to work.**
+When someone buys a product, they trust that it will perform as
+expected.
 
-When someone buys a product, they trust that the product will perform as
-expected. Testing helps engineers build that trust by identifying
-problems before customers ever encounter them. Without testing,
-companies risk things like product recalls, safety failures, and
-expensive redesigns. When testing is done well, companies can build
-better products faster, spend less time fixing problems, reduce costs,
-and give customers a product they can trust.
+Testing helps engineers build that trust by identifying problems before
+customers encounter them. Without testing, companies risk safety
+failures, recalls, expensive redesigns, and inconsistent products.
 
-At its core, testing reduces uncertainty. It transforms "we think it
-works" into "we know it works." Testing helps build confidence that the
-final product will perform when it matters most.
+At its core, testing reduces uncertainty.
 
-But testing doesn't happen on its own. Engineers need the right tools,
-workflows, and skills to efficiently gather data, analyze results, and
-make informed decisions. This is where NI helps.
+It transforms:
 
-For nearly 50 years, NI has helped engineers transform real-world
-measurements into actionable insights. From research and prototyping to
-V&V and production testing, NI provides the hardware and software
-platforms engineers use to build automated test systems, accelerate
-development, and improve product quality.
+**We think it works.**
 
-Just as NI helps engineers build confidence in their products, this
-program is designed to help you build confidence in yourself as an
-engineer.
+into:
 
-Throughout this program, you will learn how engineers approach problems,
-collect and analyze data, make decisions based on evidence, and apply
-testing principles to real-world challenges. Our goal to help you
-develop the mindset and skills that successful engineers use every day.
+**We have evidence that it works.**
 
-By the end of this program, you should be able to:
+Good testing requires engineers to:
 
-- Think critically about engineering problems
+- Ask clear questions
+- Define requirements
+- Collect reliable measurements
+- Analyze data
+- Compare results against expectations
+- Make evidence-based decisions
 
-- Approach challenges with curiosity and confidence
 
-- Understand how measurements drive engineering decisions
+The Measurement Chain
+---------------------
 
-- Apply testing concepts to real-world applications
+Engineering decisions begin with information from the physical world.
 
-- Recognize how engineering skills transfer across industries
+The process of turning a real-world condition into useful information is
+called the **measurement chain**.
 
-Because ultimately, the best engineers are not the ones who know every
-answer, they are the ones who know how to ask the right questions,
-gather evidence, and use data to make informed decisions.
+.. image:: _static/media/image5.png
+   :alt: Measurement chain
+   :align: center
+   :width: 90%
 
-How can you be the best?
-^^^^^^^^^^^^^^^^^^^^^^^^
+The measurement chain used in this workshop is:
 
-Now that we've seen how engineers use testing to solve real problems, a
-natural question is:
+**Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
 
-**What does it take to become an engineer that companies want to hire?**
+In the in-person workshop, a thermistor and mioDAQ create and acquire a
+physical electrical signal.
 
-When you look at job postings for test engineers, systems engineers,
-design engineers, or automation engineers, you'll find that companies
-are looking for much more than technical knowledge. They want engineers
-who can solve problems, think critically, communicate effectively, and
-work with data to make informed decisions.
+In this supplemental workshop, software simulates the temperature and
+sensor response. The measurements are simulated, but the analysis,
+decision logic, indicators, and engineering thought process remain the
+same.
 
-**
-**
 
-**Skills Employers Look For**
+Simulated Greenhouse Challenge
+------------------------------
 
-+-----------------------------------+-----------------------------------+
-| Technical Skills                  | Professional Skills               |
-+===================================+===================================+
-| Measurement and data acquisition  | Problem solving                   |
-| system design                     |                                   |
-+-----------------------------------+-----------------------------------+
-| Data analysis                     | Critical thinking                 |
-+-----------------------------------+-----------------------------------+
-| Programming and automation        | Communication                     |
-+-----------------------------------+-----------------------------------+
-| Hardware and software integration | Adaptability                      |
-+-----------------------------------+-----------------------------------+
-| Troubleshooting and debugging     | Curiosity                         |
-+-----------------------------------+-----------------------------------+
-| Test and validation methodologies | Teamwork                          |
-+-----------------------------------+-----------------------------------+
-| Requirements Management           |                                   |
-+-----------------------------------+-----------------------------------+
-| Test Station Design               |                                   |
-+-----------------------------------+-----------------------------------+
-
-Many of these skills are developed through hands-on experience rather
-than through lectures alone.
-
-**Skills You'll Develop Through This Program**
-
-Throughout this program, you'll practice:
-
-- Defining engineering problems
-
-- Working with sensors and measurements
-
-- Acquiring and analyzing data
-
-- Using evidence to make decisions
-
-- Troubleshooting real systems
-
-- Communicating technical ideas
-
-- Applying engineering concepts to real-world scenarios
-
-These are the same fundamental skills used by engineers across
-industries every day.
-
-**
-**
-
-**Engineering Roles That Use These Skills**
-
-The concepts we're learning apply to many careers, including:
-
-+-----------------------------------+-----------------------------------+
-| Test Engineer                     | Validation Engineer               |
-+===================================+===================================+
-| Automation Engineer               | Systems Engineer                  |
-+-----------------------------------+-----------------------------------+
-| Controls Engineer                 | Manufacturing Engineer            |
-+-----------------------------------+-----------------------------------+
-| Design Engineer                   |                                   |
-+-----------------------------------+-----------------------------------+
-
-While the titles may differ, they all rely on testing, measurement,
-problem solving, and data-driven decision making. These skills aren't
-limited to one industry. You'll find engineers using these same concepts
-in industries from Aerospace all the way to Agriculture.
-
-This program is designed to help you begin developing these skills so
-that you can become the kind of engineer teams want to work with and
-companies want to hire.
-
-So now that you know what you are getting yourself into, let’s test!
-
-How to Apply Test
------------------
-
-Measurement Chain
-^^^^^^^^^^^^^^^^^
-
-Engineering is all about making decisions using data. To do that,
-engineers must first capture information from the physical world and
-transform it into something they can understand and act on. This process
-is called the measurement chain.
-
-|image4|
-
-In this activity, you'll step into the role of a test engineer and use
-the measurement chain to build a greenhouse temperature monitoring
-system that can detect temperature changes and respond when conditions
-fall outside the desired range.
-
-|image5|\ Hands-on Materials
-""""""""""""""""""""""""""""
-
-In this workshop you will be using a USB-6421 mioDAQ for you system and
-you will plug it in using a USB-C to USB-C cable to a computer. On the
-computer, it will have LabVIEW 2026 Q3 and Visual Studio Code with
-Python 3.14 installed already. You will also find this student manual
-and the code for today’s workshop in the file explorer.
-
-For your circuit, you will be using a breadboard, wires, LEDs,
-resistors, a 10k Ohm Thermistor, and a 0.1uF Capacitor.
-
-Greenhouse: Project Scenario
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Project Scenario
+^^^^^^^^^^^^^^^^
 
 Imagine you work for a climate-control company that supports commercial
 greenhouses.
 
-Your customer needs a temperature monitoring system that helps protect
-crops from extreme temperatures. Your job is to design a system that can
-monitor temperature and warn operators when conditions move outside
-acceptable limits.
+Your customer needs a temperature-monitoring system that helps protect
+crops from extreme temperatures.
 
-Your system must:
+Your job is to evaluate a simulated system that monitors temperature
+and warns operators when conditions move outside an acceptable range.
 
-- Continuously monitor greenhouse temperature
+The system must:
 
-- Maintain a target range of 70°F to 85°F
+- Continuously monitor greenhouse temperature.
+- Maintain a target range of 70°F to 85°F.
+- Turn on a blue indicator below 70°F.
+- Turn on a red indicator above 85°F.
+- Display the current system status.
+- Provide a clear warning when conditions are unsafe.
 
-- Turn on a Blue LED when temperature falls below 70°F
 
-- Turn on a Red LED when temperature rises above 85°F
+In-Person and Simulation Experiences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Provide a clear warning indication to operators
+Both versions follow the same measurement chain, but they generate and
+acquire data differently.
 
-- Help prevent crop damage caused by temperature extremes
++----------------------+--------------------------------+--------------------------------+
+| Step                 | In-Person Workshop             | Simulation Workshop            |
++======================+================================+================================+
+| Physical phenomenon  | Real temperature               | Simulated temperature          |
++----------------------+--------------------------------+--------------------------------+
+| Sensor               | Physical thermistor            | Simulated thermistor response  |
++----------------------+--------------------------------+--------------------------------+
+| Signal               | Electrical voltage             | Software-generated value       |
++----------------------+--------------------------------+--------------------------------+
+| Acquisition          | NI mioDAQ                       | Python or LabVIEW loop         |
++----------------------+--------------------------------+--------------------------------+
+| Analysis             | Convert and compare data       | Compare simulated temperature  |
++----------------------+--------------------------------+--------------------------------+
+| Decision             | Hot, cold, or acceptable       | Hot, cold, or acceptable       |
++----------------------+--------------------------------+--------------------------------+
+| Action               | Physical warning LEDs          | Simulated LED indicators       |
++----------------------+--------------------------------+--------------------------------+
+
+.. important::
+
+   A simulation helps us study the logic and behavior of a measurement
+   system, but it does not replace every aspect of working with real
+   hardware.
+
+   Real measurements can be affected by sensor accuracy, electrical
+   noise, wiring, signal conditioning, input range, grounding, and the
+   physical environment.
+
 
 Physical Phenomenon
 ^^^^^^^^^^^^^^^^^^^
 
-**What are we trying to measure?**
+A physical phenomenon is something happening in the real world that we
+want to observe or measure.
 
-A physical phenomenon is something occurring in the real world that we
-want to observe or measure. Examples include temperature, pressure,
-force, motion, light, and sound. In every measurement system, this is
-where the process begins.
+Examples include temperature, pressure, force, motion, light, and sound.
 
-*How does this apply to our project?*
+For this project, the physical phenomenon is greenhouse temperature.
 
-In our project\ **,** we want to measure the temperature inside a
-greenhouse to determine whether conditions are safe for the crops.
-Temperature changes continuously over time, making it an analog
-phenomenon.
+In the in-person workshop, the temperature surrounding a physical
+thermistor changes. In the simulation, software creates a changing
+temperature value that represents greenhouse conditions.
 
 **Think About It**
 
-- What happens if the greenhouse becomes too hot?
+- What could happen if a greenhouse becomes too hot?
+- What could happen if it becomes too cold?
+- Why would operators need a warning system?
 
-- What happens if it becomes too cold?
 
-- Why is temperature important for plants?
+Sensor
+^^^^^^
 
-Choosing a Sensor/ Transducer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A sensor detects a physical phenomenon and converts it into a signal
+that a measurement system can use.
 
-**What can we use to measure our physical phenomena?**
+The in-person workshop uses a real thermistor. A thermistor changes
+resistance as its temperature changes.
 
-A sensor is a device that detects a physical phenomenon and converts it
-into an electrical signal that can be measured by a DAQ, computer, or
-control system. Different physical phenomena require different sensor
-types. Engineers must select a sensor that is appropriate for the
-quantity being measured, the expected operating conditions, the required
-accuracy, and the needs of the application. In the measurement chain,
-the sensor serves as the bridge between the physical world and the
-measurement system.
+The simulation represents the thermistor in software.
 
-*How does this apply to our project?*
+Pressing **Heat Thermistor** or **Cool Thermistor** changes the
+simulated temperature that would normally be influenced by the physical
+sensor and its environment.
 
-To measure temperature in our greenhouse, we need a sensor that can
-detect temperature changes and convert them into a measurable signal.
-Common temperature sensors include:
-
-- **Thermometers**: Directly display temperature for human observation
-  but typically do not provide an electrical output that can be easily
-  integrated into automated systems.
-
-- **Thermocouples**: Generate a small voltage that changes with
-  temperature. They are commonly used for industrial measurements and
-  can operate across very wide temperature ranges.
-
-- **Thermistors**: Change resistance as temperature changes. They are
-  inexpensive, highly sensitive, and commonly used for ambient
-  temperature monitoring and control applications.
 
 Signal Conditioning
 ^^^^^^^^^^^^^^^^^^^
 
-*What is Signal Conditioning?*
+Signal conditioning prepares a sensor signal so it can be measured
+accurately and safely.
 
-Signal conditioning is the process of preparing a real-world sensor
-signal so that it is clean, safe, accurate, and in the correct format
-for a DAQ device to measure. In simple terms, signal conditioning acts
-like the translator between the sensor and the DAQ.
+A physical thermistor does not directly produce a temperature value that
+a computer can understand. It changes resistance. A circuit and
+measurement device convert that changing resistance into a measurable
+voltage.
 
-*Why would we want Signal Conditioning?*
+Signal conditioning can help:
 
-In the physical world, signals are often noisy, small, nonlinear, or
-unsafe to connect directly to measurement hardware. Signal conditioning
-helps improve measurement quality and protects the system so engineers
-can trust the data they collect.
+- Reduce noise
+- Amplify small signals
+- Provide sensor excitation
+- Protect measurement equipment
+- Match the signal to the DAQ input
+- Address nonlinear sensor behavior
+- Improve measurement quality
 
-+-----------------------------------+-----------------------------------+
-| Reason                            | Why it matters                    |
-+===================================+===================================+
-| Reduce noise                      | - Real-world signals can pick up  |
-|                                   |   electrical noise from motors,   |
-|                                   |   relays, VFDs, power lines, and  |
-|                                   |   EMI/RFI sources.                |
-|                                   |                                   |
-|                                   | - Filtering helps prevent noise   |
-|                                   |   from hiding the actual          |
-|                                   |   measurement.                    |
-+-----------------------------------+-----------------------------------+
-| Amplify small signals             | - Some sensors produce very small |
-|                                   |   voltages.                       |
-|                                   |                                   |
-|                                   | - Amplifying the signal helps use |
-|                                   |   more of the DAQ input range,    |
-|                                   |   which can improve measurement   |
-|                                   |   resolution.                     |
-+-----------------------------------+-----------------------------------+
-| Provide excitation                | - Some sensors, such as strain    |
-|                                   |   gauges, load cells, RTDs, and   |
-|                                   |   IEPE accelerometers, require    |
-|                                   |   power or excitation before they |
-|                                   |   can produce a useful signal.    |
-+-----------------------------------+-----------------------------------+
-| Provide isolation                 | - Isolation helps protect         |
-|                                   |   operators, DAQ hardware, and    |
-|                                   |   equipment.                      |
-|                                   |                                   |
-|                                   | - It can also reduce ground loops |
-|                                   |   that distort measurements.      |
-+-----------------------------------+-----------------------------------+
-| Linearize sensor output           | - Some sensors, such as           |
-|                                   |   thermocouples and thermistors,  |
-|                                   |   are nonlinear.                  |
-|                                   |                                   |
-|                                   | - Signal conditioning or software |
-|                                   |   can convert raw voltage into    |
-|                                   |   useful engineering units.       |
-+-----------------------------------+-----------------------------------+
-| Match DAQ input requirements      | - DAQ devices expect specific     |
-|                                   |   signal types and ranges, such   |
-|                                   |   as ±10 V, 0–10 V, 4–20 mA, TTL  |
-|                                   |   digital signals, or             |
-|                                   |   differential inputs.            |
-+-----------------------------------+-----------------------------------+
-| Protect against overvoltage       | - Signal conditioning can help    |
-|                                   |   protect measurement hardware    |
-|                                   |   from transients, ESD, inductive |
-|                                   |   kickback, wiring mistakes, and  |
-|                                   |   other industrial hazards.       |
-+-----------------------------------+-----------------------------------+
+In the simulation, we do not physically condition an electrical signal.
+The program directly generates a simulated temperature.
 
-*Why does this matter?*
+This allows us to focus on the rest of the measurement chain, but it is
+important to remember that a real measurement system must account for
+the sensor's electrical behavior.
 
-Signal conditioning matters because measurement quality depends on more
-than the sensor alone. Even a good sensor can produce poor data if the
-signal is noisy, too small, or not matched to the DAQ input.
-
-When the right signal conditioning is used, engineers can collect
-cleaner data, troubleshoot faster, and make better decisions about the
-system they are testing.
-
-It also helps engineers choose the right hardware because different
-sensors require different measurement approaches.
-
-We also offer built-in signal conditioning on all our hardware. This
-isn't the case with lower cost hardware which requires you to DIY signal
-conditioning which can get complicated and take a lot of time. This is
-an advantage of the NI platform. Many signal conditioning features are
-built directly into the measurement system.
-
-NI hardware can provide capabilities such as thermocouple support,
-cold-junction compensation (CJC), configurable measurement ranges, and
-measurement-specific hardware designed to improve data quality. This
-reduces development time and helps engineers collect reliable
-measurements more quickly.
-
-First Look at the mioDAQ
-""""""""""""""""""""""""
-
-*Example: Signal Conditioning in the mioDAQ*
-
-For example, mioDAQ includes a built-in cold-junction compensation (CJC)
-sensor that allows users to connect thermocouples directly and measure
-temperature without requiring additional CJC hardware. However, while
-this capability is useful, mioDAQ is generally not the recommended NI
-platform for high-accuracy thermocouple measurements. Dedicated
-temperature measurement hardware such as NI C Series thermocouple
-modules includes signal conditioning and measurement circuitry
-specifically optimized for thermocouple applications. The built-in CJC
-on mioDAQ is a convenience feature that enables thermocouple
-measurements, but it is best viewed as a flexible general-purpose DAQ
-rather than a dedicated temperature acquisition system.
-
-**Engineering Note:** A device that can measure a signal is not always
-the best device for that signal. Engineers often choose specialized
-hardware when the application demands the highest accuracy, lowest
-noise, or the simplest wiring. General-purpose DAQ devices like mioDAQ
-offer flexibility, while dedicated measurement modules are optimized for
-specific sensor types.
-
-*How does this apply to our project?*
-
-In the greenhouse project, the thermistor is the sensor that responds to
-temperature. Before the temperature can be used to control warning LEDs,
-the sensor signal needs to be converted into a useful measurement that
-the DAQ and computer can interpret.
-
-|image6|\ You will find that the circuit is already built for you but to
-fully understand the flow of electricity, let’s look at the schematic.
-
-|LED Series Resistor Calculator \| DigiKey Electronics|
-
-.. _section-1:
-
-.. figure:: _static/media/image9.png
-   :width: 6.52014in
-   :height: 3.30903in
-
-   Figure 4. Schematic of the Thermistor Circuit and LED Circuit.
-
-Figure 5. A pinout diagram of the circuit and mioDAQ connections.
 
 Acquisition
 ^^^^^^^^^^^
 
-.. _what-is-it-4:
+Acquisition is the step where a system collects measurements and makes
+the data available to the computer.
 
-**What is it?**
+During the in-person workshop, the mioDAQ acquires voltage from the
+thermistor circuit.
 
-Acquisition is the step where the DAQ device collects real-world signals
-and converts them into digital data that the computer can use. Sensors
-measure something happening in the physical world, such as temperature,
-force, pressure, or motion. The DAQ then reads the electrical signal
-from the sensor and turns it into a stream of numbers.
+During the simulation, a timed software loop generates and records a new
+temperature value every 100 milliseconds.
 
-In simple terms, acquisition is how the computer “listens” to the
-physical world.
+The simulation begins at a room temperature of 70°F.
 
-**Key acquisition settings**
+- Holding **Heat Thermistor** increases the simulated temperature.
+- Holding **Cool Thermistor** decreases the simulated temperature.
+- Releasing both buttons allows the temperature to move toward 70°F.
 
-When engineers acquire data, they need to choose settings that match the
-signal they are trying to measure. Three important settings are sampling
-rate, resolution, and input range.
+Although the source is different, the program still collects a sequence
+of measurements over time.
 
-+-----------------------------------+-----------------------------------+
-| Setting                           | Why it matters                    |
-+===================================+===================================+
-| Sampling rate                     | - Sampling rate is how many       |
-|                                   |   measurements are taken per      |
-|                                   |   second.                         |
-|                                   |                                   |
-|                                   | - Faster-changing signals need a  |
-|                                   |   higher sampling rate so         |
-|                                   |   important changes are not       |
-|                                   |   missed.                         |
-+-----------------------------------+-----------------------------------+
-| Resolution                        | - Resolution describes how small  |
-|                                   |   of a change the DAQ can detect. |
-|                                   |                                   |
-|                                   | - Higher resolution allows the    |
-|                                   |   system to distinguish smaller   |
-|                                   |   changes in voltage or sensor    |
-|                                   |   output.                         |
-+-----------------------------------+-----------------------------------+
-| Input range                       | - Input range defines the signal  |
-|                                   |   levels the DAQ is expected to   |
-|                                   |   measure.                        |
-|                                   |                                   |
-|                                   | - Choosing the right range helps  |
-|                                   |   protect the device and improves |
-|                                   |   measurement quality.            |
-+-----------------------------------+-----------------------------------+
-
-**Why does this matter?**
-
-Acquisition matters because poor data collection leads to poor
-decisions. If the sampling rate is too slow, the system may miss
-important changes. If the range is not selected correctly, the signal
-may be clipped or measured with less detail. If the resolution is too
-low, small changes may be hidden.
-
-Good acquisition settings help make data readable, useful, and reliable.
-
-**How does this apply in our project?**
-
-In the greenhouse project, the thermistor responds to changes in
-temperature and produces a signal that the mioDAQ can measure. The
-mioDAQ then converts that signal into digital data that can be displayed
-and analyzed on the computer. This is the point in the measurement chain
-where the physical world becomes data.
-
-As you collect data, think about:
-
-- Is the temperature increasing or decreasing?
-
-- How quickly is it changing?
-
-- Does the data accurately reflect what is happening in the greenhouse?
-
-The quality of the data you collect directly impacts the decisions your
-system will make later, such as whether a warning LED should turn on.
-
-How would you do this in LabVIEW code?
-""""""""""""""""""""""""""""""""""""""
-
-|image7|\ Before we get into the LabVIEW code, let’s talk about the
-basic parts of LabVIEW.
-
-Think of LabVIEW as a graphical programming language. Instead of writing
-lines of text-based code, you create programs by connecting functional
-blocks together.
-
-**Understanding the LabVIEW Environment**
-
-LabVIEW has two primary workspaces:
-
-- Front Panel
-
-  - The user interface of your program
-
-  - Contains controls (inputs) and indicators (outputs)
-
-  - This is where users interact with the application
-
-- Block Diagram
-
-  - The programming workspace
-
-  - Contains functions, structures, and logic
-
-  - This is where the code that controls the program is created
-
-|image8|
-
-Functions
-
-- Perform actions such as math operations, data acquisition, timing, and
-  file handling
-
-- Similar to functions or commands in traditional programming languages
-
-Wires
-
-- Connect functions together
-
-- Transfer data between different parts of the program
-
-- The color and appearance of a wire indicate the type of data being
-  passed
-
-- |image9|\ Think of wires as the roads that carry information from one
-  part of your program to another.
-
-**Useful Keyboard Shortcuts**
-
-+-----------+----------------------------------------------------------+
-| Shortcut  | Purpose                                                  |
-+===========+==========================================================+
-| Ctrl + E  | Switch between Front Panel and Block Diagram             |
-+-----------+----------------------------------------------------------+
-| Ctrl + H  | Show Context Help window                                 |
-+-----------+----------------------------------------------------------+
-| Ctrl + B  | Remove broken wires from the Block Diagram               |
-+-----------+----------------------------------------------------------+
-| Ctrl + Z  | Undo                                                     |
-+-----------+----------------------------------------------------------+
-| Ctrl + S  | Save your VI                                             |
-+-----------+----------------------------------------------------------+
-
-|image10|\ Now, let’s start digging into the code! Before data can be
-collected, LabVIEW must tell the mioDAQ what to measure and how to
-measure it. The following code:
-
-Figure 6. Configure the mioDAQ and prepare it to collect data.
-
-1. Creates and configures a DAQ task.
-
-2. Selects which channel will read the thermistor signal.
-
-3. Sets the sampling settings, including how often data is collected.
-
-4. Starts the task so the hardware can begin acquiring measurements.
-
-Then in our while loop structure you will find the DAQmx Read.vi
-function.
-
-|image11|
-
-Figure 7. Continuously read voltage measurements from the thermistor
-circuit.
-
-This part of the code:
-
-1. DAQ Assistant/DAQmx Read continuously receives voltage measurements
-   from the thermistor.
-
-2. The While Loop repeats this process over and over, creating a live
-   measurement system.
-
-3. New sensor readings are collected each time the loop runs.
-
-At this stage, the mioDAQ is simply measuring voltage. The system still
-doesn't know the actual temperature.
-
-So, this brings up the question, how do we analyze the data into
-readable data?
-
-How would you do this in Python code?
-"""""""""""""""""""""""""""""""""""""
-
-But before we analyze our data, let’s see how we can do the same
-workflow in Python!
-
-.. figure:: _static/media/image15.emf
-
-   Figure 8. Install necessary libraries and prepare mioDAQ task.
-
-Before the program can collect data, Python must tell the mioDAQ what
-channels to use and how the measurements should be taken.
-
-This part of the code:
-
-- Creates three tasks:
-
-  - One Analog Input task for measuring the thermistor voltage
-
-  - One Digital Output task for the "Hot" LED
-
-  - One Digital Output task for the "Cold" LED
-
-- Selects which mioDAQ channels will be used.
-
-- Configures the sampling rate to collect data continuously.
-
-- Sets both LEDs to an OFF state before the program begins.
-
-- Starts the acquisition task so measurements can begin.
-
-Before the program can collect data, Python must tell the mioDAQ what
-channels to use and how the measurements should be taken.
-
-Now, the code tells the mioDAQ to continuously read voltage measurements
-from the thermistor and ensure the data is valid before performing
-calculations.
-
-.. figure:: _static/media/image16.emf
-
-   Figure 9.Continuously read voltage measurements from the thermistor
-   in a while loop.
-
-This part of the code:
-
-- The program enters a While Loop that continuously runs until the user
-  stops the program.
-
-- Each iteration reads a new voltage measurement from the thermistor
-  circuit.
-
-- The measurement counter keeps track of how many readings have been
-  collected.
-
-- The voltage is checked to ensure it falls within the expected
-  operating range (0 V to 5 V).
-
-- Invalid measurements are ignored to prevent calculation errors later
-  in the program.
-
-Now that we have initialized and set up continuous sampling, we can
-analyze our data to ensure that we can read the measurements.
 
 Analysis
 ^^^^^^^^
 
-.. _what-is-it-5:
+Analysis is the step where data becomes useful information.
 
-**What is it?**
+The simulation compares the current temperature against the greenhouse
+requirements:
 
-Analysis is the step where raw data is turned into useful information.
-After the DAQ collects measurements, engineers need to inspect the data,
-calculate values, identify trends, and decide what the data means.
+- Below 70°F means the greenhouse is too cold.
+- From 70°F through 85°F means the greenhouse is in the ideal range.
+- Above 85°F means the greenhouse is overheating.
 
-In simple terms, analysis is how engineers turn numbers into
-understanding.
+The simulation also records the temperature and elapsed time.
 
-**Different analysis tools**
+When the simulation ends, Python displays a graph of temperature versus
+time so you can examine how the greenhouse changed during the test.
 
-Engineers use different tools depending on the complexity of the data
-and the goal of the test. Some tools are better for quick calculations,
-while others are better for automation, reporting, or large test
-systems.
 
-+-----------------------------------+-----------------------------------+
-| Tool                              | When it is useful                 |
-+===================================+===================================+
-| Excel                             | Useful for simple calculations,   |
-|                                   | tables, graphs, and quick         |
-|                                   | summaries.                        |
-+-----------------------------------+-----------------------------------+
-| LabVIEW                           | Useful for acquiring data,        |
-|                                   | automating measurements, creating |
-|                                   | user interfaces, and making       |
-|                                   | real-time decisions.              |
-+-----------------------------------+-----------------------------------+
-| DIAdem                            | Useful for inspecting large data  |
-|                                   | sets, creating reports, and       |
-|                                   | standardizing analysis workflows. |
-+-----------------------------------+-----------------------------------+
-| TestStand                         | Useful for organizing test        |
-|                                   | sequences, running automated test |
-|                                   | steps, and managing pass/fail     |
-|                                   | logic in larger systems.          |
-+-----------------------------------+-----------------------------------+
+Decision and Action
+^^^^^^^^^^^^^^^^^^^
 
-.. _why-does-this-matter-1:
+The simulated system uses the following logic:
 
-**Why does this matter?**
++-------------------------+----------------+---------------------------+
+| Condition               | System Status  | Action                    |
++=========================+================+===========================+
+| Temperature below 70°F  | TOO COLD       | Blue indicator turns on   |
++-------------------------+----------------+---------------------------+
+| Temperature from        | IDEAL          | Both indicators remain    |
+| 70°F through 85°F       |                | off                       |
++-------------------------+----------------+---------------------------+
+| Temperature above 85°F  | OVERHEATING    | Red indicator turns on    |
++-------------------------+----------------+---------------------------+
 
-Data by itself is not enough. Engineers need to analyze data so they can
-understand what happened, compare results, find patterns, and make
-evidence-based decisions.
+In a real greenhouse, the final action could activate a fan, heater,
+alarm, or ventilation system.
 
-This is why data is powerful: it gives engineers a way to move from
-guessing to knowing.
+In this simulation, the red and blue indicators communicate the
+decision without controlling physical equipment.
 
-**How does this apply to our project?**
 
-In the greenhouse project, students can analyze the temperature data
-collected from the thermistor. You can look at how the temperature
-changes over time, compare readings under different conditions, and
-decide whether the greenhouse is too hot, too cold, or within the
-desired range.
+Python Simulation
+-----------------
 
-- Export the acquired data for review.
+What You Need
+^^^^^^^^^^^^^
 
-- Create a simple graph of temperature versus time.
+To complete the Python simulation, install:
 
-- Calculate useful values such as minimum, maximum, average, or
-  threshold crossings.
+- Python 3
+- Visual Studio Code
+- The Microsoft Python extension for Visual Studio Code
+- Matplotlib
 
-- Summarize the results in a short report.
 
-What does this look like in LabVIEW?
-""""""""""""""""""""""""""""""""""""
+Install Python
+^^^^^^^^^^^^^^
 
-.. figure:: _static/media/image14.png
-   :width: 3.66319in
-   :height: 2.71042in
+1. Visit the `official Python download page
+   <https://www.python.org/downloads/>`_.
 
-   Figure 10. Transform raw sensor data into meaningful engineering
-   units.
+2. Download Python 3 for your operating system.
 
-Remember that the code only reads in voltage data. We do not know how to
-conceptualize temperature as voltage measurements so, we use the
-Steinhart-Hart equation to convert the voltage readings over temperature
-measurements.
+3. Run the installer.
 
-The code above:
+4. If the installer provides an option to add Python to your system
+   path, select it.
 
-- Uses the Steinhart-Hart equation to convert the thermistor's voltage
-  reading into temperature.
+5. Complete the installation.
 
-- Applies the thermistor characteristics to calculate the actual
-  temperature value.
+On Windows, open a terminal and verify the installation:
 
-- Converts electrical measurements into information we can understand
-  and use.
+.. code-block:: console
 
-Now that we can read in temperature readings, let’s start reflecting
-what is going on in the greenhouse through our indicators. This is where
-the system begins thinking like an engineer, using data to control the
-indicators.
+   py --version
 
-.. figure:: _static/media/image17.png
-   :width: 4.11667in
-   :height: 2.93333in
+If that command is not recognized, try:
 
-   Figure 11.Controls the indicators based on the current temperature.
+.. code-block:: console
 
-.. _section-2:
+   python --version
 
-.. _section-3:
 
-.. _section-4:
+Install Visual Studio Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _section-5:
+1. Visit the `Visual Studio Code download page
+   <https://code.visualstudio.com/download>`_.
 
-.. _section-6:
+2. Download the installer for your operating system.
 
-.. _section-7:
+3. Run the installer.
 
-.. _section-8:
+4. Open Visual Studio Code.
 
-.. _section-9:
+.. note::
 
-.. _section-10:
+   Visual Studio and Visual Studio Code are different applications.
 
-.. _section-11:
+   This workshop uses **Visual Studio Code**.
 
-.. _section-12:
 
-This part of the code:
+Install the Python Extension
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- A Case Structure compares the measured temperature against predefined
-  conditions.
+1. Open Visual Studio Code.
 
-- Determines whether the greenhouse is too hot, too cold, or within the
-  desired range.
+2. Select the **Extensions** icon on the left side of the window.
 
-- Executes different actions depending on the result.
+3. Search for ``Python``.
 
-What does this look like in Python?
-"""""""""""""""""""""""""""""""""""
+4. Select the Python extension published by Microsoft.
 
-.. figure:: _static/media/image18.emf
+5. Select **Install**.
 
-   Figure 12. Transform raw sensor data into meaningful engineering
-   units aka temperature.
 
-The data acquisition system measures voltage from the thermistor, but
-voltage alone does not directly represent temperature. To convert the
-electrical signal into a meaningful temperature measurement, the
-software applies a thermistor conversion equation based on the sensor's
-electrical characteristics.
+Select the Python Interpreter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The code above:
+1. Press ``Ctrl+Shift+P`` in Visual Studio Code.
 
-- Uses a thermistor conversion equation to transform the measured
-  voltage into a temperature value in degrees Celsius.
+2. Enter:
 
-- Applies the thermistor's known response curve to determine the actual
-  temperature from the electrical measurement.
+.. code-block:: text
 
-- Converts the calculated temperature from Celsius to Fahrenheit for
-  display and analysis.
+   Python: Select Interpreter
 
-- Records temperature values and elapsed time data for trending,
-  visualization, and further processing.
+3. Select the Python installation you installed earlier.
 
-Now that the temperature measurements have been calculated, the
-application can begin using this information to monitor environmental
-conditions and update indicators, providing meaningful feedback about
-what is occurring within the system.
 
-.. figure:: _static/media/image19.emf
+Install Matplotlib
+^^^^^^^^^^^^^^^^^^
 
-   Figure 13. Boolean logic for the LEDs.
+In Visual Studio Code, select:
 
-This part of the code:
+**Terminal → New Terminal**
 
-- Compares the measured temperature against predefined high and low
-  temperature thresholds.
+Enter:
 
-- Determines whether cooling or heating indicators should be activated
-  based on the current temperature.
+.. code-block:: console
 
-- Controls the red and blue LEDs to provide visual feedback of the
-  system state.
+   py -m pip install matplotlib
 
-- Updates the LED outputs only when their state changes, improving
-  efficiency by avoiding unnecessary hardware writes.
+If your computer does not recognize ``py``, use:
 
-- Converts the LED states into ON/OFF text and displays the voltage,
-  temperature, and indicator status to the user.
+.. code-block:: console
 
-|image12|\ After each of the code runs, we get a graph like the
-following:
+   python -m pip install matplotlib
 
-|image13|
 
-Figure 14. Examples of Graphs after code executes in LabVIEW and Python.
+Download the Python Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We can finally take our data and make a decision!
+Select the link below to download the complete Python greenhouse
+simulation.
 
-Decision
-^^^^^^^^
+:download:`Download Simulation ThermistorWithLED Python.py
+<_static/downloads/Simulation ThermistorWithLED Python.py>`
 
-.. _what-is-it-6:
+.. tip::
 
-**What is it?**
+   Save the file somewhere easy to find, such as your Downloads folder.
 
-Decision making is the final step of the measurement chain, where engineers use analyzed data to determine what action should happen next. Once we know what the data means, we can decide how the system should respond.
+   Make sure the filename still ends in ``.py``.
 
-**Examples of decisions include:**
 
-- Passing or failing a product during testing
+View the Python Code Online
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Triggering an alarm or warning
+You can review the complete Python program below before downloading it.
 
-- Adjusting a control output
+.. literalinclude:: _static/downloads/Simulation ThermistorWithLED Python.py
+   :language: python
+   :linenos:
+   :caption: Complete Python Greenhouse Simulation
+   :name: python-greenhouse-simulation
 
-- Turning equipment on or off
 
-In simple terms, decision making is how data becomes action.
+Open the Downloaded Python Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _why-does-this-matter-2:
+1. Open Visual Studio Code.
 
-**Why does this matter?**
+2. Select **File → Open File**.
 
-Collecting data is only useful if it helps us make better decisions. Engineers use measurements, requirements, and thresholds to determine whether a system is behaving as expected and what should happen next.
+3. Select ``Simulation ThermistorWithLED Python.py``.
 
-**Good decisions depend on:**
+4. Confirm that a Python interpreter is selected.
 
-- Reliable measurements
+5. Select the **Run Python File** button in the upper-right corner.
 
-- Accurate analysis
 
-- Clearly defined requirements
+Enter the Temperature Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Without a decision, the measurement process does not lead to action.
+A terminal will open at the bottom of Visual Studio Code.
 
-**How does this apply to our project?**
+Enter the high-temperature threshold:
 
-In our greenhouse, measuring the temperature is only part of the
-solution. Once we know the temperature, we need to decide whether any
-action is necessary.
+.. code-block:: text
 
-**For example:**
+   Enter the high temperature threshold in °F: 85
 
-- If the greenhouse becomes **too hot**, the system may need to activate
-  a cooling device, such as a fan.
+Then enter the low-temperature threshold:
 
-- If the greenhouse becomes **too cold**, the system may need to
-  activate a heating element.
+.. code-block:: text
 
-- If the temperature is within the desired range, the system may not
-  need to do anything at all.
+   Enter the low temperature threshold in °F: 70
 
-In our workshop, we'll use LEDs to represent these decisions. The system
-will analyze the temperature and automatically determine which LED
-should turn on based on the greenhouse conditions.
+Press **Enter** after each value.
 
-This is the same process used in real-world test and automation systems:
-measure the environment, analyze the data, make a decision, and take
-action.
+The simulated front panel will open in a separate window.
+
+
+Explore the Simulated Front Panel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The simulated front panel includes:
+
+**Temperature**
+   Displays the current simulated temperature in Fahrenheit and Celsius.
+
+**Status**
+   Displays IDEAL, TOO COLD, or OVERHEATING.
+
+**High indicator**
+   Represents the red warning LED in the in-person system.
+
+**Low indicator**
+   Represents the blue warning LED in the in-person system.
+
+**Heat Thermistor**
+   Increases the simulated temperature while the button is held.
+
+**Cool Thermistor**
+   Decreases the simulated temperature while the button is held.
+
+
+Python Simulation Activity
+--------------------------
+
+Test 1: Normal Conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Allow the simulation to run without pressing either button.
+
+Observe:
+
+- The current temperature
+- The system status
+- The red indicator
+- The blue indicator
+
+**Think About It**
+
+- Is the greenhouse within the acceptable range?
+- Are either of the warning indicators on?
+- Does the system meet the greenhouse requirement?
+
+
+Test 2: Overheating
+^^^^^^^^^^^^^^^^^^^
+
+Press and hold **Heat Thermistor**.
+
+Continue heating until the temperature rises above the high threshold.
+
+Observe:
+
+- The temperature at which the status changes
+- The text displayed in the status window
+- The red indicator
+- The blue indicator
+
+**Think About It**
+
+- Why does the red indicator remain off at exactly 85°F?
+- At what point does the Boolean condition become true?
+- What real greenhouse action could replace the red indicator?
+
+
+Test 3: Recovery
+^^^^^^^^^^^^^^^^
+
+Release the **Heat Thermistor** button.
+
+Observe how the simulated temperature moves toward room temperature.
+
+Watch what happens when the temperature returns to the acceptable range.
+
+**Think About It**
+
+- When does the red indicator turn off?
+- What causes the status to return to IDEAL?
+- Is the system measuring, analyzing, and deciding continuously?
+
+
+Test 4: Too Cold
+^^^^^^^^^^^^^^^^
+
+Press and hold **Cool Thermistor**.
+
+Continue cooling until the temperature falls below the low threshold.
+
+Observe:
+
+- The temperature at which the status changes
+- The blue indicator
+- The status display
+- The terminal output
+
+**Think About It**
+
+- Why does the blue indicator remain off at exactly 70°F?
+- What action might a real greenhouse system take?
+- How is the decision connected to the greenhouse requirement?
+
+
+Test 5: Analyze the Data
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Close the simulation window after testing the hot, ideal, and cold
+conditions.
+
+The program will display:
+
+- A message showing that the simulation stopped
+- The number of simulated readings collected
+- A graph of temperature versus time
+
+Use the graph to identify:
+
+1. When heating began
+2. When the greenhouse exceeded 85°F
+3. When the temperature returned to the ideal range
+4. When cooling began
+5. When the greenhouse fell below 70°F
+6. When both warning indicators were off
+
+
+Optional LabVIEW Simulation
+---------------------------
+
+LabVIEW is a graphical programming environment. Instead of writing only
+text-based instructions, LabVIEW programs are created by connecting
+functions and structures with wires.
+
+The LabVIEW simulation follows the same greenhouse requirements and
+measurement-chain workflow as the Python simulation.
+
+
+Install LabVIEW Community Edition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Visit the `NI LabVIEW Community Edition download page
+   <https://www.ni.com/en/support/downloads/software-products/download.labview-community.html>`_.
+
+2. Sign in with an NI account or create an account.
+
+3. Select LabVIEW Community Edition.
+
+4. Run the installer.
+
+5. Follow the installation prompts.
+
+6. Open LabVIEW after installation.
+
+7. Complete any required sign-in or activation prompts.
+
+
+Download the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Select the link below to download the LabVIEW greenhouse simulation.
+
+:download:`Download Simulation ThermistorWithLED (1).vi
+<_static/downloads/Simulation ThermistorWithLED (1).vi>`
+
+.. note::
+
+   A LabVIEW VI cannot be displayed as text on this page in the same way
+   as the Python program.
+
+   Download the VI and open it in LabVIEW to view the Front Panel and
+   Block Diagram.
+
+
+Open the LabVIEW Simulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open LabVIEW.
+
+2. Select **File → Open**.
+
+3. Select ``Simulation ThermistorWithLED (1).vi``.
+
+4. Open the Front Panel.
+
+5. Select the **Run** arrow.
+
+6. Follow the instructions displayed on the Front Panel.
+
+
+The LabVIEW Front Panel
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The Front Panel is the user interface of a LabVIEW program.
+
+Use the Front Panel to:
+
+- Enter the high and low temperature thresholds
+- Heat or cool the simulated thermistor
+- View the current temperature
+- View the simulated warning indicators
+- Stop the simulation
+
+If you have a screenshot of the simulated Front Panel, add it to:
+
+.. code-block:: text
+
+   docs/source/_static/media/labview_simulation_front_panel.png
+
+Then display it here:
+
+.. figure:: _static/media/labview_simulation_front_panel.png
+   :width: 85%
+   :align: center
+   :alt: LabVIEW greenhouse simulation Front Panel
+
+   LabVIEW greenhouse simulation Front Panel.
+
+
+The LabVIEW Block Diagram
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Block Diagram contains the graphical code that controls the
+simulation.
+
+Look for the following programming elements:
+
+- While Loop
+- Timing function
+- Simulated temperature value
+- Comparison functions
+- Boolean logic
+- Case Structure
+- Graph or chart
+- Stop control
+
+If you have a screenshot of the simulated Block Diagram, add it to:
+
+.. code-block:: text
+
+   docs/source/_static/media/labview_simulation_block_diagram.png
+
+Then display it here:
+
+.. figure:: _static/media/labview_simulation_block_diagram.png
+   :width: 95%
+   :align: center
+   :alt: LabVIEW greenhouse simulation Block Diagram
+
+   LabVIEW greenhouse simulation Block Diagram.
+
+
+Python and LabVIEW Comparison
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Python and LabVIEW programs look different, but they follow the same
+engineering process.
+
++----------------------+--------------------------------+--------------------------------+
+| Engineering Step     | Python                         | LabVIEW                        |
++======================+================================+================================+
+| Continuous execution | Tkinter callback loop          | While Loop                     |
++----------------------+--------------------------------+--------------------------------+
+| Timing               | Scheduled update interval      | Timing function                |
++----------------------+--------------------------------+--------------------------------+
+| Requirements         | Threshold variables            | Numeric controls or constants  |
++----------------------+--------------------------------+--------------------------------+
+| Analysis             | Conditional statements         | Comparison functions           |
++----------------------+--------------------------------+--------------------------------+
+| Decision             | If/elif/else logic             | Boolean or Case Structure logic|
++----------------------+--------------------------------+--------------------------------+
+| Display              | Tkinter interface              | Front Panel indicators         |
++----------------------+--------------------------------+--------------------------------+
+| Visualization        | Matplotlib plot                | Waveform chart or graph        |
++----------------------+--------------------------------+--------------------------------+
+
+The programming syntax is different, but the engineering thinking is
+the same.
+
+
+Troubleshooting
+---------------
+
+Python Is Not Recognized
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the terminal does not recognize ``py``, try:
+
+.. code-block:: console
+
+   python --version
+
+If neither command works:
+
+1. Reinstall Python.
+2. Confirm that Python is added to your system path.
+3. Restart Visual Studio Code.
+4. Select the Python interpreter again.
+
+
+Matplotlib Is Missing
+^^^^^^^^^^^^^^^^^^^^^
+
+If the program reports:
+
+.. code-block:: text
+
+   ModuleNotFoundError: No module named 'matplotlib'
+
+Open a Visual Studio Code terminal and run:
+
+.. code-block:: console
+
+   py -m pip install matplotlib
+
+If necessary, use:
+
+.. code-block:: console
+
+   python -m pip install matplotlib
+
+
+The Program Appears to Be Waiting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Check the terminal at the bottom of Visual Studio Code.
+
+The program asks for the high and low temperature thresholds before
+opening the simulated front panel.
+
+Enter:
+
+.. code-block:: text
+
+   85
+
+and then:
+
+.. code-block:: text
+
+   70
+
+
+The LabVIEW VI Will Not Open
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Confirm that:
+
+- LabVIEW is installed.
+- The VI download completed.
+- The file still has the ``.vi`` extension.
+- You are opening the VI from inside LabVIEW.
+
+A VI saved in a newer LabVIEW version may not open in an older LabVIEW
+version.
+
+
+Reflection Questions
+--------------------
+
+After completing the simulation, answer the following questions:
+
+1. What physical phenomenon was represented by the simulation?
+
+2. What sensor did the software simulate?
+
+3. How did the program acquire new temperature values?
+
+4. What requirements were used to analyze the data?
+
+5. How did the program determine whether the greenhouse was safe?
+
+6. What actions occurred when the temperature crossed a threshold?
+
+7. How would the experience differ if a real thermistor and mioDAQ were
+   used?
+
+8. What measurement challenges can occur with real hardware that are not
+   represented by the simulation?
+
+9. What evidence shows that the system behaved as expected?
+
+10. Did the results show that the simulated system met its requirements?
+
 
 Summary
 -------
 
-Throughout this workshop, we followed the same process that test
-engineers use every day to understand and interact with the world around
+Throughout this workshop, you followed the same general process that
+test engineers use to understand and interact with the world around
 them.
 
-We started with a physical phenomenon, temperature, and used a
-thermistor to convert it into an electrical signal. The mioDAQ acquired
-that signal, LabVIEW helped us process and visualize the data, and we
-analyzed the results to understand what they meant. Finally, we used
-that information to make a decision and control an output.
+You began with a physical phenomenon: greenhouse temperature.
 
-Together, these steps form the **measurement chain**:
+The software represented the response of a temperature sensor, acquired
+simulated measurements, analyzed the temperature, compared it against
+requirements, made a decision, and updated warning indicators.
 
-**Physical Phenomenon → Sensor → DAQ → Analysis → Decision → Action**
+Together, these steps form the measurement chain:
 
-This workflow is the foundation of countless engineering systems, from
-greenhouse monitoring and industrial automation to product testing and
-autonomous systems.
+**Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
+
+The simulation does not replace every aspect of real measurement
+hardware. It removes physical variables such as wiring, electrical
+noise, sensor tolerance, input configuration, and signal conditioning.
+
+However, it allows you to practice the engineering workflow and
+understand how measurements become decisions.
+
+Most importantly, you made your first simulated measurement and used
+data as evidence.
+
+That is the foundation of test.
+
+
+Get Certified for Level 1
+-------------------------
+
+You have completed the Level 1 online workshop!
+
+To receive credit for completing Level 1, complete the online feedback
+survey using the link below.
+
+`Complete the Level 1 Feedback Survey and Certification Form
+<https://forms.cloud.microsoft/r/0LK7kuz1Xx>`_
+
+.. important::
+
+   Complete the survey after finishing the Python or LabVIEW simulation.
+
+   Make sure the information you submit is accurate so your Level 1
+   workshop completion can be recorded.
+
 
 Looking Ahead
 -------------
 
-In the next workshop, you'll move beyond measuring and monitoring by
-developing more advanced LabVIEW applications, interacting with
-additional hardware, and building systems that can automatically respond
-to their environment.
+In the next level, you will examine what makes a measurement reliable.
 
-You'll start thinking less like someone collecting data and more like an
-engineer designing complete solutions.
+You will explore how engineers select sensors and acquisition settings,
+interpret sensor specifications, choose sampling configurations, log
+data, and determine whether they can trust the results.
 
-.. |image2| image:: _static/media/image2.png
-   :width: 5.93958in
-   :height: 2.70208in
-.. |image3| image:: _static/media/image3.png
-   :width: 4.85069in
-   :height: 2.82917in
-.. |Microsoft Uses NI LabVIEW and PXI Modular Instruments to Develop Production Test System for Xbox 360 Controllers - NI| image:: _static/media/image4.jpeg
-   :width: 2.60625in
-   :height: 1.61736in
-.. |image4| image:: _static/media/image5.png
-   :width: 6.5in
-   :height: 0.72847in
-.. |image5| image:: _static/media/image6.png
-   :width: 7.36944in
-   :height: 3.44653in
-.. |image6| image:: _static/media/image7.png
-   :width: 3.09375in
-   :height: 2.42647in
-.. |LED Series Resistor Calculator \| DigiKey Electronics| image:: _static/media/image8.png
-   :width: 2.38264in
-   :height: 2.2875in
-.. |image7| image:: _static/media/image10.png
-   :width: 6.5in
-   :height: 2.26875in
-.. |image8| image:: _static/media/image11.png
-   :width: 6.5in
-   :height: 2.51736in
-.. |image9| image:: _static/media/image12.png
-   :width: 6.5in
-   :height: 2.20486in
-.. |image10| image:: _static/media/image13.png
-   :width: 4.61528in
-   :height: 2.93889in
-.. |image11| image:: _static/media/image14.png
-   :width: 3.51875in
-   :height: 3.07639in
-.. |image12| image:: _static/media/image20.png
-   :width: 2.77847in
-   :height: 1.90139in
-.. |image13| image:: _static/media/image21.png
-   :width: 2.96389in
-   :height: 1.83611in
+Level 1 focused on the question:
+
+**How do we make a measurement?**
+
+Level 2 will begin asking:
+
+**How do we make a good measurement?**
