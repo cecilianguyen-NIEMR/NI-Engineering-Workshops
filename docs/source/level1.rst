@@ -17,11 +17,10 @@ About This Workshop
 Level 1 introduces the foundations of test engineering through a
 greenhouse temperature-monitoring challenge.
 
-This online version of the workshop uses software simulations. Instead
-of connecting a physical thermistor and LEDs to measurement hardware,
-you will interact with a simulated thermistor, collect simulated
-temperature data, analyze the results, and observe how the system
-responds.
+This online version uses software simulations. Instead of connecting a
+physical thermistor and LEDs to measurement hardware, you will interact
+with a simulated thermistor, collect simulated temperature data, analyze
+the results, and observe how the system responds.
 
 You will complete the simulation first in LabVIEW and then in Python.
 
@@ -30,16 +29,14 @@ in-person workshop:
 
 **Physical Phenomenon → Sensor → Acquisition → Analysis → Decision → Action**
 
-.. note::
+During the in-person workshop, students use a physical thermistor,
+warning LEDs, a breadboard, and an NI mioDAQ.
 
-   During the in-person workshop, students use a physical thermistor,
-   warning LEDs, a breadboard, and an NI mioDAQ.
+In this online workshop, LabVIEW and Python generate the temperature
+measurements and simulate the warning indicators.
 
-   In this online workshop, LabVIEW and Python generate the temperature
-   measurements and simulate the warning indicators.
-
-   The source of the data is different, but the engineering process is
-   the same.
+The source of the data is different, but the engineering process is the
+same.
 
 
 Learning Objectives
@@ -290,8 +287,8 @@ The Measurement Chain
 
 Engineering decisions begin with information from the physical world.
 
-The process of turning a real-world condition into useful information
-is called the **measurement chain**.
+The process of turning a real-world condition into useful information is
+called the **measurement chain**.
 
 .. image:: _static/media/image5.png
    :alt: Measurement chain
@@ -361,15 +358,13 @@ acquire data differently.
 | Action               | Physical warning LEDs        | Simulated indicators         |
 +----------------------+------------------------------+------------------------------+
 
-.. important::
+A simulation helps us study the behavior and logic of a measurement
+system, but it does not replace every aspect of working with physical
+hardware.
 
-   A simulation helps us study the behavior and logic of a measurement
-   system, but it does not replace every aspect of working with physical
-   hardware.
-
-   Real measurements can be affected by sensor accuracy, electrical
-   noise, wiring, signal conditioning, input range, grounding, and the
-   physical environment.
+Real measurements can be affected by sensor accuracy, electrical noise,
+wiring, signal conditioning, input range, grounding, and the physical
+environment.
 
 
 Physical Phenomenon
@@ -445,8 +440,8 @@ signal. The programs directly generate simulated temperature values.
 
 This allows us to focus on the rest of the measurement chain.
 
-However, it is important to remember that a physical measurement system
-must account for the electrical behavior of the sensor.
+However, a physical measurement system must account for the electrical
+behavior of the sensor.
 
 
 Acquisition
@@ -465,11 +460,11 @@ The simulations begin at a temperature near 70°F.
 
 - Using Heat Thermistor increases the simulated temperature.
 - Using Cool Thermistor decreases the simulated temperature.
-- Releasing the controls allows the temperature to move back toward the
+- Releasing the controls allows the temperature to move toward the
   simulated room temperature.
 
-Although the source is different, the programs still collect a sequence
-of measurements over time.
+Although the data source is different, the programs still collect a
+sequence of measurements over time.
 
 
 Analysis
@@ -558,14 +553,8 @@ Install LabVIEW Community Edition for Free
 
 LabVIEW Community Edition is available for free for non-commercial use.
 
-.. important::
-
-   You need an NI account to download and activate LabVIEW Community
-   Edition.
-
-   Use the same NI account during both download and activation.
-
-Follow these steps:
+You need an NI account to download and activate LabVIEW Community
+Edition. Use the same NI account during both download and activation.
 
 1. Open the `NI LabVIEW Community Edition download page
    <https://www.ni.com/en/support/downloads/software-products/download.labview-community.html>`_.
@@ -576,8 +565,8 @@ Follow these steps:
 
 4. Sign in with your NI account when prompted.
 
-5. If you do not have an NI account, create one and then return to the
-   LabVIEW Community Edition download page.
+5. If you do not have an NI account, create one and return to the
+   download page.
 
 6. Remember which account you use. You will use the same account to
    activate LabVIEW.
@@ -619,36 +608,8 @@ If the activation prompt does not appear:
 
 5. Select **Activate**.
 
-.. note::
-
-   Activation requires a network connection.
-
-   After Community Edition has been activated, LabVIEW can be used
-   offline.
-
-
-LabVIEW Installation Troubleshooting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If Community Edition does not activate:
-
-1. Confirm that you installed LabVIEW Community Edition rather than a
-   commercial LabVIEW edition.
-
-2. Confirm that you are using the same NI account for download and
-   activation.
-
-3. Open NI License Manager.
-
-4. Open the **Local Licenses** tab.
-
-5. Expand the installed LabVIEW version.
-
-6. Locate Community Edition.
-
-7. Right-click Community Edition and select **Activate**.
-
-If the activation still fails, use NI's activation support resources.
+Activation requires an internet connection. After Community Edition has
+been activated, LabVIEW can be used offline.
 
 
 Download the LabVIEW Simulation
@@ -659,11 +620,9 @@ Select the link below to download the LabVIEW greenhouse simulation:
 :download:`Download the LabVIEW Thermistor Simulation
 <_static/downloads/Simulation ThermistorWithLED (1).vi>`
 
-.. tip::
+Save the VI somewhere easy to find, such as your Downloads folder.
 
-   Save the VI somewhere easy to find, such as your Downloads folder.
-
-   Make sure the filename still ends in ``.vi``.
+Make sure the downloaded filename still ends in ``.vi``.
 
 
 Open the LabVIEW Simulation
@@ -708,21 +667,6 @@ Locate the following controls and indicators:
 The Front Panel represents an interface that a greenhouse operator could
 use to monitor system conditions.
 
-.. note::
-
-   If you have a screenshot of the LabVIEW Front Panel, place it in:
-
-   ``docs/source/_static/media/labview_simulation_front_panel.png``
-
-Then display it using:
-
-.. figure:: _static/media/labview_simulation_front_panel.png
-   :width: 85%
-   :align: center
-   :alt: LabVIEW greenhouse simulation Front Panel
-
-   LabVIEW greenhouse simulation Front Panel.
-
 
 Explore the Block Diagram
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -741,21 +685,6 @@ Look for the following elements:
 - Indicator terminals
 - Graph or chart terminal
 - Stop control
-
-.. note::
-
-   If you have a screenshot of the LabVIEW Block Diagram, place it in:
-
-   ``docs/source/_static/media/labview_simulation_block_diagram.png``
-
-Then display it using:
-
-.. figure:: _static/media/labview_simulation_block_diagram.png
-   :width: 95%
-   :align: center
-   :alt: LabVIEW greenhouse simulation Block Diagram
-
-   LabVIEW greenhouse simulation Block Diagram.
 
 Press ``Ctrl+E`` again to return to the Front Panel.
 
@@ -924,6 +853,9 @@ If the command is not recognized, try:
 Install Visual Studio Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Visual Studio and Visual Studio Code are different applications. This
+workshop uses Visual Studio Code.
+
 1. Visit the `Visual Studio Code download page
    <https://code.visualstudio.com/download>`_.
 
@@ -932,12 +864,6 @@ Install Visual Studio Code
 3. Run the installer.
 
 4. Open Visual Studio Code.
-
-.. note::
-
-   Visual Studio and Visual Studio Code are different applications.
-
-   This workshop uses **Visual Studio Code**.
 
 
 Install the Python Extension
@@ -1000,11 +926,9 @@ simulation:
 :download:`Download the Python Thermistor Simulation
 <_static/downloads/Simulation ThermistorWithLED Python.py>`
 
-.. tip::
+Save the file somewhere easy to find, such as your Downloads folder.
 
-   Save the file somewhere easy to find, such as your Downloads folder.
-
-   Make sure the filename still ends in ``.py``.
+Make sure the downloaded filename still ends in ``.py``.
 
 
 View the Python Code Online
@@ -1250,6 +1174,23 @@ The indicator turns off when the condition is no longer true.
 Troubleshooting
 ---------------
 
+LabVIEW Community Edition Does Not Activate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Confirm that you are using the same NI account that you used to download
+LabVIEW Community Edition.
+
+Open NI License Manager and:
+
+1. Select **Activate Software**.
+
+2. Sign in with your NI account.
+
+3. Select **Check my account for licenses**.
+
+4. Select **Activate**.
+
+
 The LabVIEW VI Will Not Open
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1362,8 +1303,8 @@ You began with a physical phenomenon: greenhouse temperature.
 
 LabVIEW and Python represented the response of a temperature sensor,
 acquired simulated measurements, analyzed the data, compared the
-temperature against requirements, made decisions, and updated the
-warning indicators.
+temperature against requirements, made decisions, and updated warning
+indicators.
 
 Together, these steps form the measurement chain:
 
@@ -1394,12 +1335,10 @@ Level 1 feedback survey to receive credit for the workshop.
 `Complete the Level 1 Feedback Survey and Certification Form
 <https://forms.cloud.microsoft/r/0LK7kuz1Xx>`_
 
-.. important::
+Complete both simulations before submitting the survey.
 
-   Complete both simulations before submitting the survey.
-
-   Make sure the information you submit is accurate so your Level 1
-   completion can be recorded.
+Make sure the information you submit is accurate so your Level 1
+completion can be recorded.
 
 
 Looking Ahead
